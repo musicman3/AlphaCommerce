@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>products_slider_title</key>
+      <value><![CDATA[Products Slider]]></value>
+      <group>modules-content</group>
+    </definition>
+    <definition>
+      <key>products_slider_new_products_title</key>
+      <value><![CDATA[New Products]]></value>
+      <group>modules-content</group>
+    </definition>
+    <definition>
+      <key>products_slider_best_sellers_title</key>
+      <value><![CDATA[Popular Products]]></value>
+      <group>modules-content</group>
+    </definition>
+    <definition>
+      <key>products_slider_specials_title</key>
+      <value><![CDATA[Specials]]></value>
+      <group>modules-content</group>
+    </definition>
+    <definition>
+      <key>products_slider_feature_title</key>
+      <value><![CDATA[Feature Products]]></value>
+      <group>modules-content</group>
+    </definition>
+  </definitions>
+</language>

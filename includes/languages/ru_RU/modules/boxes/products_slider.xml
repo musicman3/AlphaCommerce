@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+  <definitions>
+    <definition>
+      <key>box_products_slider_title</key>
+      <value><![CDATA[Слайдер товаров]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_products_slider_new_products_title</key>
+      <value><![CDATA[Новые товары]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_products_slider_best_sellers_title</key>
+      <value><![CDATA[Бестселлеры]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_products_slider_specials_title</key>
+      <value><![CDATA[Специальная цена]]></value>
+      <group>modules-boxes</group>
+    </definition>
+    <definition>
+      <key>box_products_slider_feature_title</key>
+      <value><![CDATA[Рекомендуемые]]></value>
+      <group>modules-boxes</group>
+    </definition>
+  </definitions>
+</language>
