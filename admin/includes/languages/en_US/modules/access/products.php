@@ -11,3 +11,8 @@
 
 access_products_title = Products
 access_products_new_title = New Product
+access_products_xsell_title = Attached
+button_products_module = Product Catalog
+button_category_select = Select
+select_category = Select Category
+heading_product_active = Active

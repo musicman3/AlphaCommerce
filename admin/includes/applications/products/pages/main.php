@@ -100,6 +100,9 @@
 
   var productDeleteLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=delete'); ?>';
   var productDeleteLinkIcon = '<?php echo osc_icon('trash.png'); ?>';
+  
+  var productXsellLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&action=xsell&add_related_products_ID=PRODUCTID'); ?>';
+  var productXsellLinkIcon = '<?php echo osc_icon('application-x-ar.png'); ?>';
 
   var osC_DataTable = new osC_DataTable();
   osC_DataTable.load();
@@ -147,7 +150,7 @@
 	  newCell.align = 'center';	  
 
       newCell = newRow.insertCell(4);
-      newCell.innerHTML = '<a href="' + productEditLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productEditLinkIcon + '</a>&nbsp;<a href="' + productCopyLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productCopyLinkIcon + '</a>&nbsp;<a href="' + productDeleteLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productDeleteLinkIcon + '</a>';
+      newCell.innerHTML = '<a href="' + productEditLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productEditLinkIcon + '</a>&nbsp;<a href="' + productCopyLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productCopyLinkIcon + '</a>&nbsp;<a href="' + productDeleteLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productDeleteLinkIcon + '</a>&nbsp;<a href="' + productXsellLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productXsellLinkIcon + '</a>';
       newCell.align = 'right';
 
       newCell = newRow.insertCell(5);

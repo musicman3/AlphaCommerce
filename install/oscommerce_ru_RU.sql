@@ -551,6 +551,15 @@ CREATE TABLE osc_products_variants_values (
   KEY idx_products_variants_values_groups_id (products_variants_groups_id)
 );
 
+DROP TABLE IF EXISTS osc_products_xsell;
+CREATE TABLE osc_products_xsell (
+  ID int NOT NULL auto_increment,
+  products_id int unsigned DEFAULT '1' NOT NULL,
+  products_xsell_id int unsigned DEFAULT '1' NOT NULL,
+  sort_order int unsigned DEFAULT '1' NOT NULL,
+  PRIMARY KEY  (ID)
+);
+
 DROP TABLE IF EXISTS osc_reviews;
 CREATE TABLE osc_reviews (
   reviews_id int NOT NULL auto_increment,

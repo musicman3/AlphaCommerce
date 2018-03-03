@@ -75,4 +75,5 @@
   define('TABLE_CMS', DB_TABLE_PREFIX . 'cms');
   define('TABLE_CMS_XSELL', DB_TABLE_PREFIX . 'cms_xsell');
   define('TABLE_FEATURE', DB_TABLE_PREFIX . 'feature');
+  define('TABLE_PRODUCTS_XSELL', DB_TABLE_PREFIX . 'products_xsell');
 ?>
