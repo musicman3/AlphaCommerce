@@ -22,7 +22,8 @@
     $osC_Breadcrumb->add($osC_Language->get('breadcrumb_checkout'), osc_href_link(FILENAME_CHECKOUT, null));
   }
 
-  $osC_Template = osC_Template::setup('cart');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('cart');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 

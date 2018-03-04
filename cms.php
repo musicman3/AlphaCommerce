@@ -25,7 +25,8 @@
     $osC_Breadcrumb->add($osC_Language->get('breadcrumb_cms'), osc_href_link(FILENAME_CMS));
   }
 
-  $osC_Template = osC_Template::setup('cms');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('cms');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 

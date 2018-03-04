@@ -18,7 +18,8 @@
 
   $osC_Language->load('products');
 
-  $osC_Template = osC_Template::setup('products');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('products');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 

@@ -22,7 +22,8 @@
     $osC_Breadcrumb->add($osC_Language->get('breadcrumb_information'), osc_href_link(FILENAME_INFO));
   }
 
-  $osC_Template = osC_Template::setup('info');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('info');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 

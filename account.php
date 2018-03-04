@@ -34,7 +34,8 @@
     $osC_Breadcrumb->add($osC_Language->get('breadcrumb_my_account'), osc_href_link(FILENAME_ACCOUNT, null, 'SSL'));
   }
 
-  $osC_Template = osC_Template::setup('account');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('account');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 
