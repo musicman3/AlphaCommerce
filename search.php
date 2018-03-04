@@ -22,7 +22,8 @@
     $osC_Breadcrumb->add($osC_Language->get('breadcrumb_search'), osc_href_link(FILENAME_SEARCH));
   }
 
-  $osC_Template = osC_Template::setup('search');
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('search');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 
