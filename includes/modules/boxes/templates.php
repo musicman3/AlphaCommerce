@@ -28,9 +28,11 @@
     function initialize() {
       global $osC_Session;
 
+      $osC_Template = new osC_Template();
+
       $data = array();
 
-      foreach (osC_Template::getTemplates() as $template) {
+      foreach ($osC_Template->getTemplates() as $template) {
         $data[] = array('id' => $template['code'], 'text' => $template['title']);
       }
 

@@ -17,8 +17,9 @@
   require('includes/application_top.php');
 
   $osC_Language->load('index');
-
-  $osC_Template = osC_Template::setup('index');
+  
+  $osC_Template = new osC_Template();
+  $osC_Template = $osC_Template->setup('index');
 
   require('templates/' . $osC_Template->getCode() . '.php');
 
