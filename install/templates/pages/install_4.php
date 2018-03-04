@@ -14,8 +14,9 @@
 
   define('DB_TABLE_PREFIX', $_POST['DB_TABLE_PREFIX']);
   include('../includes/database_tables.php');
-
-  $osC_Database = osC_Database::connect($_POST['DB_SERVER'], $_POST['DB_SERVER_USERNAME'], $_POST['DB_SERVER_PASSWORD'], $_POST['DB_DATABASE_CLASS']);
+  
+  $osC_Database = new osC_Database();
+  $osC_Database = $osC_Database->connect($_POST['DB_SERVER'], $_POST['DB_SERVER_USERNAME'], $_POST['DB_SERVER_PASSWORD'], $_POST['DB_DATABASE_CLASS']);
   $osC_Database->selectDatabase($_POST['DB_DATABASE']);
 
   $Qupdate = $osC_Database->query('update :table_configuration set configuration_value = :configuration_value where configuration_key = :configuration_key');
