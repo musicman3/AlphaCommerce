@@ -37,7 +37,7 @@
         echo "<div align=\"right\"><form name=\"xsellcategories\" action=\"#\" method=\"post\">";
         echo "<input type=\"hidden\" name=\"add_related_products_ID\" value=\"" . $_GET['add_related_products_ID'] . "\" />";
         $current_category_id = 1;
-        echo $osC_Language->get('select_category') . ":&nbsp;" . osc_draw_pull_down_menu('cPath', osC_cms_Admin::category_tree(), $current_category_id, null, null);
+        echo $osC_Language->get('select_category') . ":&nbsp;" . osc_draw_pull_down_menu('cPath', osC_xproducts_Admin::category_tree(), $current_category_id, null, null);
         
         // need one select submit button
         
@@ -90,16 +90,16 @@
                     $p++;           
                 }
 
-                $XcmsList = $osC_Database->query('select products_xsell_id from :table_products_xsell where products_id = :add_related_products_id');
-                $XcmsList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
-                $XcmsList->bindInt(':add_related_products_id', $_GET['add_related_products_ID']);
-                $XcmsList->execute();                
+                $XproductsList = $osC_Database->query('select products_xsell_id from :table_products_xsell where products_id = :add_related_products_id');
+                $XproductsList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
+                $XproductsList->bindInt(':add_related_products_id', $_GET['add_related_products_ID']);
+                $XproductsList->execute();                
 
                 $xsell_id_pr[] = array();
                 $pc = 0;
                 
-                while ( $XcmsList->next() ) {
-                        $xsell_id_pr[$pc] = $XcmsList->valueInt('products_xsell_id');
+                while ( $XproductsList->next() ) {
+                        $xsell_id_pr[$pc] = $XproductsList->valueInt('products_xsell_id');
                         $pc++;
                 }
 

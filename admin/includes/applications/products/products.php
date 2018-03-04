@@ -83,7 +83,7 @@
                                       'short_order' => $xvalue,
                                       'products_id' => $_GET['add_related_products_ID']);                    
 
-                        if ( !osC_cms_Admin::xsell_save_sort($data) ) {
+                        if ( !osC_xproducts_Admin::xsell_save_sort($data) ) {
                             $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed'), 'error');
                             $error = true;
                         }
@@ -115,7 +115,7 @@
                 
                        $data = array('products_id' => $_GET['add_related_products_ID']);
 
-                        if ( !osC_cms_Admin::xsell_delete_all($data)) {
+                        if ( !osC_xproducts_Admin::xsell_delete_all($data)) {
                             $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed') . " in delete process", 'error');
                             $error = true;
                         }
@@ -124,10 +124,10 @@
                 if (isset($_POST['products_xsell_id']) && ($_POST['products_xsell_id'])) {
                 
                         foreach ($_POST['products_xsell_id'] as $temp) {
-                            $data_cms = $_GET['add_related_products_ID'];
+                            $data_xproducts = $_GET['add_related_products_ID'];
                             $data_xsell = $temp;
                             
-                            if ( !osC_cms_Admin::xsell_update($data_cms, $data_xsell)) {
+                            if ( !osC_xproducts_Admin::xsell_update($data_xproducts, $data_xsell)) {
                                 $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed') . "-> " . $data_xsell, 'error');
                                 $error = true;
                             }
