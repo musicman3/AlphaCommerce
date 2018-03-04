@@ -16,20 +16,20 @@
 */
 
 
-  class osC_cms_Admin {
+  class osC_xproducts_Admin {
     public static function getData($id) {
       global $osC_Database, $osC_Language;
 
 
-      $QcmsListItem = $osC_Database->query('select * from :table_products where products_id = :products_id and language_id = :language_id');
-      $QcmsListItem->bindTable(':table_products', TABLE_PRODUCTS);
-      $QcmsListItem->bindInt(':products_id', $id);
-      $QcmsListItem->bindInt(':language_id', $osC_Language->getID());
-      $QcmsListItem->execute();
+      $QxproductsListItem = $osC_Database->query('select * from :table_products where products_id = :products_id and language_id = :language_id');
+      $QxproductsListItem->bindTable(':table_products', TABLE_PRODUCTS);
+      $QxproductsListItem->bindInt(':products_id', $id);
+      $QxproductsListItem->bindInt(':language_id', $osC_Language->getID());
+      $QxproductsListItem->execute();
       
-      $data = $QcmsListItem->toArray(); 
+      $data = $QxproductsListItem->toArray(); 
       
-      $QcmsListItem->freeResult();
+      $QxproductsListItem->freeResult();
       
       return $data;
       
@@ -130,7 +130,7 @@
       return false;
     }            
 
-    public static function xsell_update($data_cms, $data_xsell, $default = false) {
+    public static function xsell_update($data_xproducts, $data_xsell, $default = false) {
       global $osC_Database, $osC_Language;
 
       $error = false;
@@ -140,7 +140,7 @@
            $XaddList = $osC_Database->query('insert into :table_products_xsell (ID, products_id, products_xsell_id, sort_order) values (:id, :products_id, :products_xsell_id, :xsell_sort)' );
            $XaddList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
            $XaddList->bindInt(':id', '');           
-           $XaddList->bindInt(':products_id', $data_cms);
+           $XaddList->bindInt(':products_id', $data_xproducts);
            $XaddList->bindInt(':products_xsell_id', $data_xsell);
            $XaddList->bindInt(':xsell_sort', 1);      
            $XaddList->execute();
