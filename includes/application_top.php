@@ -72,7 +72,8 @@
   require('includes/classes/database.php');
 
 // make a connection to the database... now
-  $osC_Database = osC_Database::connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
+  $osC_Database = new osC_Database();
+  $osC_Database = $osC_Database->connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
   $osC_Database->selectDatabase(DB_DATABASE);
 
 // set the application parameters
