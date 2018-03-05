@@ -40,14 +40,15 @@
 <?php
   $access = array();
 
+  $osC_Access = new osC_Access();
   if ( isset($_SESSION['admin']) ) {
-    $access = osC_Access::getLevels();
+    $access = $osC_Access->getLevels();
   }
 
   ksort($access);
 
   foreach ( $access as $group => $links ) {
-    echo '    <li><span></span><span>' . osC_Access::getGroupTitle($group) . '</span>' .
+    echo '    <li><span></span><span>' . $osC_Access->getGroupTitle($group) . '</span>' .
          '      <ul>';
 
     ksort($links);
