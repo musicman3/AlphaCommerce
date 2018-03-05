@@ -32,6 +32,8 @@
 
   $module = null;
   $class = null;
+  
+  $osC_Access = new osC_Access();
 
   if ( empty($_GET) ) {
     echo json_encode(array('rpcStatus' => RPC_STATUS_NO_MODULE));
@@ -39,8 +41,8 @@
   } else {
     $first_array = array_slice($_GET, 0, 1);
     $_module = osc_sanitize_string(basename(key($first_array)));
-
-    if ( !osC_Access::hasAccess($_module) ) {
+	
+    if ( !$osC_Access->hasAccess($_module) ) {
       echo json_encode(array('rpcStatus' => RPC_STATUS_NO_ACCESS));
       exit;
     }
