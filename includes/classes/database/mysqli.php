@@ -138,7 +138,7 @@
           if ( mysqli_warning_count($this->link) > 0 ) {
             $warning_query = @mysqli_query($this->link, 'show warnings');
             while ( $warning = mysqli_fetch_row($warning_query) ) {
-              trigger_error(sprintf('[MYSQL] %s (%d): %s [QUERY] ' . $query, $warning[0], $warning[1], $warning[2]), E_USER_WARNING);
+              trigger_error(sprintf('[MYSQL] %s (%d): %s [QUERY] ' . $query, $warning[1], $warning[2]), E_USER_WARNING);
             }
             mysqli_free_result($warning_query);
           }
