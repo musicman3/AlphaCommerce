@@ -14,9 +14,10 @@
 
   class osC_Application_Login_Actions_process extends osC_Application_Login {
     public function __construct() {
-      global $osC_Database, $osC_Language, $osC_MessageStack;
+      global $osC_Database, $osC_Language, $osC_MessageStack, $osC_Access;
 
       parent::__construct();
+     
 
       if ( !empty($_POST['user_name']) && !empty($_POST['user_password']) ) {
         $Qadmin = $osC_Database->query('select id, user_name, user_password from :table_administrators where user_name = :user_name');
@@ -28,7 +29,7 @@
           if ( osc_validate_password($_POST['user_password'], $Qadmin->value('user_password')) ) {
             $_SESSION['admin'] = array('id' => $Qadmin->valueInt('id'),
                                        'username' => $Qadmin->value('user_name'),
-                                       'access' => osC_Access::getUserLevels($Qadmin->valueInt('id')));
+                                       'access' => $osC_Access->getUserLevels($Qadmin->valueInt('id')));
 
             $get_string = null;
 
