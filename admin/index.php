@@ -25,8 +25,8 @@
       $_SESSION['module'] = $_module;
     }
   }
-
-  if ( !osC_Access::hasAccess($_SESSION['module']) ) {
+  $osC_Access = new osC_Access();
+  if ( !$osC_Access->hasAccess($_SESSION['module']) ) {
     $osC_MessageStack->add('header', 'No access.', 'error');
 
     osc_redirect_admin(osc_href_link_admin(FILENAME_DEFAULT));
@@ -35,8 +35,9 @@
   $osC_Language->loadIniFile($_SESSION['module'] . '.php');
 
   require('includes/applications/' . $_SESSION['module'] . '/' . $_SESSION['module'] . '.php');
-
-  $osC_Template = osC_Template_Admin::setup($_SESSION['module']);
+  
+  $osC_Template_Admin = new osC_Template_Admin();
+  $osC_Template = $osC_Template_Admin->setup($_SESSION['module']);
   $osC_Template->set('default');
 
   require('templates/default.php');
