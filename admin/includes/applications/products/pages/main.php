@@ -12,20 +12,22 @@
   as published by the Free Software Foundation.
 */
 
-  $categories_array = array();
+	$categories_array = array();
 
-  foreach ( $osC_CategoryTree->getArray() as $value ) {
-    $categories_array[] = array('id' => end(explode('_', $value['id'])),
-                                'text' => $value['title']);
-  }
+	foreach ( $osC_CategoryTree->getArray() as $value ) {
+		$temp = explode('_', $value['id']);
+		$result = end($temp);
+		$categories_array[] = array('id' => $result,
+		'text' => $value['title']);
+	}
 ?>
 
 <h1><?php echo osc_link_object(osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule()), $osC_Template->getPageTitle()); ?></h1>
 
 <?php
-  if ( $osC_MessageStack->exists($osC_Template->getModule()) ) {
-    echo $osC_MessageStack->get($osC_Template->getModule());
-  }
+	if ( $osC_MessageStack->exists($osC_Template->getModule()) ) {
+		echo $osC_MessageStack->get($osC_Template->getModule());
+	}
 ?>
 
 <div style="padding-bottom: 10px;">
@@ -41,26 +43,26 @@
 
 <form name="batch" action="#" method="post">
 
-<table border="0" width="100%" cellspacing="0" cellpadding="2" class="dataTable" id="productsDataTable">
-  <thead>
-    <tr>
-      <th align="left"><?php echo $osC_Language->get('table_heading_products'); ?></th>
-      <th align="center"><?php echo $osC_Language->get('table_heading_price'); ?></th>
-      <th align="center"><?php echo $osC_Language->get('table_heading_quantity'); ?></th>
-	  <th align="center"><?php echo $osC_Language->get('table_heading_status'); ?></th>
-      <th align="right" width="150"><?php echo $osC_Language->get('table_heading_action'); ?></th>
-      <th align="center" width="20"><?php echo osc_draw_checkbox_field('batchFlag', null, null, 'onclick="flagCheckboxes(this);"'); ?></th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th align="right" colspan="5"><?php echo '<input type="image" src="' . osc_icon_raw('copy.png') . '" title="' . $osC_Language->get('icon_copy') . '" onclick="document.batch.action=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=batch_copy') . '\';" />&nbsp;<input type="image" src="' . osc_icon_raw('trash.png') . '" title="' . $osC_Language->get('icon_trash') . '" onclick="document.batch.action=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=batch_delete') . '\';" />'; ?></th>
-      <th align="center" width="20"><?php echo osc_draw_checkbox_field('batchFlag', null, null, 'onclick="flagCheckboxes(this);"'); ?></th>
-    </tr>
-  </tfoot>
-  <tbody>
-  </tbody>
-</table>
+  <table border="0" width="100%" cellspacing="0" cellpadding="2" class="dataTable" id="productsDataTable">
+	<thead>
+	  <tr>
+		<th align="left"><?php echo $osC_Language->get('table_heading_products'); ?></th>
+		<th align="center"><?php echo $osC_Language->get('table_heading_price'); ?></th>
+		<th align="center"><?php echo $osC_Language->get('table_heading_quantity'); ?></th>
+		<th align="center"><?php echo $osC_Language->get('table_heading_status'); ?></th>
+		<th align="right" width="150"><?php echo $osC_Language->get('table_heading_action'); ?></th>
+		<th align="center" width="20"><?php echo osc_draw_checkbox_field('batchFlag', null, null, 'onclick="flagCheckboxes(this);"'); ?></th>
+	  </tr>
+	</thead>
+	<tfoot>
+	  <tr>
+		<th align="right" colspan="5"><?php echo '<input type="image" src="' . osc_icon_raw('copy.png') . '" title="' . $osC_Language->get('icon_copy') . '" onclick="document.batch.action=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=batch_copy') . '\';" />&nbsp;<input type="image" src="' . osc_icon_raw('trash.png') . '" title="' . $osC_Language->get('icon_trash') . '" onclick="document.batch.action=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=batch_delete') . '\';" />'; ?></th>
+		<th align="center" width="20"><?php echo osc_draw_checkbox_field('batchFlag', null, null, 'onclick="flagCheckboxes(this);"'); ?></th>
+	  </tr>
+	</tfoot>
+	<tbody>
+	</tbody>
+  </table>
 
 </form>
 
@@ -70,94 +72,94 @@
 </div>
 
 <script type="text/javascript"><!--
-  var moduleParamsCookieName = 'oscadmin_module_' + pageModule;
+	var moduleParamsCookieName = 'oscadmin_module_' + pageModule;
 
-  var moduleParams = new Object();
-  moduleParams.page = 1;
-  moduleParams.search = '';
+	var moduleParams = new Object();
+	moduleParams.page = 1;
+	moduleParams.search = '';
 
-  if ( $.cookie(moduleParamsCookieName) != null ) {
-    var p = $.secureEvalJSON($.cookie(moduleParamsCookieName));
-    moduleParams.page = parseInt(p.page);
-    moduleParams.search = String(p.search);
-  }
+	if ( $.cookie(moduleParamsCookieName) != null ) {
+		var p = $.secureEvalJSON($.cookie(moduleParamsCookieName));
+		moduleParams.page = parseInt(p.page);
+		moduleParams.search = String(p.search);
+	}
 
-  var dataTableName = 'productsDataTable';
-  var dataTableDataURL = '<?php echo osc_href_link_admin('rpc.php', $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=getAll'); ?>';
+	var dataTableName = 'productsDataTable';
+	var dataTableDataURL = '<?php echo osc_href_link_admin('rpc.php', $osC_Template->getModule() . '&cID=' . $current_category_id . '&action=getAll'); ?>';
 
-  var productLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=preview'); ?>';
-  var productLinkIcon = '<?php echo osc_icon('products.png'); ?>';
-  var productVariantLinkIcon = '<?php echo osc_icon('attach.png'); ?>';
+	var productLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=preview'); ?>';
+	var productLinkIcon = '<?php echo osc_icon('products.png'); ?>';
+	var productVariantLinkIcon = '<?php echo osc_icon('attach.png'); ?>';
 
-  var productIconTrue = '<?php echo osc_icon('checkbox_ticked.gif'); ?>';
-  var productIconFalse = '<?php echo osc_icon('checkbox_crossed.gif'); ?>';  
+	var productIconTrue = '<?php echo osc_icon('checkbox_ticked.gif'); ?>';
+	var productIconFalse = '<?php echo osc_icon('checkbox_crossed.gif'); ?>';  
 
-  var productEditLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=save'); ?>';
-  var productEditLinkIcon = '<?php echo osc_icon('edit.png'); ?>';
+	var productEditLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=save'); ?>';
+	var productEditLinkIcon = '<?php echo osc_icon('edit.png'); ?>';
 
-  var productCopyLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=copy'); ?>';
-  var productCopyLinkIcon = '<?php echo osc_icon('copy.png'); ?>';
+	var productCopyLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=copy'); ?>';
+	var productCopyLinkIcon = '<?php echo osc_icon('copy.png'); ?>';
 
-  var productDeleteLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=delete'); ?>';
-  var productDeleteLinkIcon = '<?php echo osc_icon('trash.png'); ?>';
+	var productDeleteLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '=PRODUCTID&cID=' . $current_category_id . '&action=delete'); ?>';
+	var productDeleteLinkIcon = '<?php echo osc_icon('trash.png'); ?>';
   
-  var productXsellLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&action=xsell&add_related_products_ID=PRODUCTID'); ?>';
-  var productXsellLinkIcon = '<?php echo osc_icon('application-x-ar.png'); ?>';
+	var productXsellLink = '<?php echo osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&action=xsell&add_related_products_ID=PRODUCTID'); ?>';
+	var productXsellLinkIcon = '<?php echo osc_icon('application-x-ar.png'); ?>';
 
-  var osC_DataTable = new osC_DataTable();
-  osC_DataTable.load();
+	var osC_DataTable = new osC_DataTable();
+	osC_DataTable.load();
 
-  function feedDataTable(data) {
-    var rowCounter = 0;
+	function feedDataTable(data) {
+		var rowCounter = 0;
 
-    for ( var r in data.entries ) {
-      var record = data.entries[r];
+		for ( var r in data.entries ) {
+			var record = data.entries[r];
 
-      var newRow = $('#' + dataTableName)[0].tBodies[0].insertRow(rowCounter);
-      newRow.id = 'row' + parseInt(record.products_id);
+			var newRow = $('#' + dataTableName)[0].tBodies[0].insertRow(rowCounter);
+			newRow.id = 'row' + parseInt(record.products_id);
 
-      $('#row' + parseInt(record.products_id)).mouseover( function() { rowOverEffect(this); }).mouseout( function() { rowOutEffect(this); }).click(function(event) {
-        if (event.target.type !== 'checkbox') {
-          $(':checkbox', this).trigger('click');
-        }
-      }).css('cursor', 'pointer');
+			$('#row' + parseInt(record.products_id)).mouseover( function() { rowOverEffect(this); }).mouseout( function() { rowOutEffect(this); }).click(function(event) {
+				if (event.target.type !== 'checkbox') {
+					$(':checkbox', this).trigger('click');
+				}
+			}).css('cursor', 'pointer');
 
-      if ( parseInt(record.has_children) == 1 ) {
-        var useProductLinkIcon = productVariantLinkIcon;
-      } else {
-        var useProductLinkIcon = productLinkIcon;
-      }
+			if ( parseInt(record.has_children) == 1 ) {
+				var useProductLinkIcon = productVariantLinkIcon;
+			} else {
+				var useProductLinkIcon = productLinkIcon;
+			}
 	  
-      if ( htmlSpecialChars(record.products_status) == 'false' ) {
-        var useProductLinkStatus = productIconFalse;
-      } else {
-        var useProductLinkStatus = productIconTrue;
-      }	  
+			if ( htmlSpecialChars(record.products_status) == 'false' ) {
+				var useProductLinkStatus = productIconFalse;
+			} else {
+				var useProductLinkStatus = productIconTrue;
+			}	  
 
-      var newCell = newRow.insertCell(0);
-      newCell.innerHTML = '<a href="' + productLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + useProductLinkIcon + '&nbsp;' + htmlSpecialChars(record.products_name) + '</a>';
+			var newCell = newRow.insertCell(0);
+			newCell.innerHTML = '<a href="' + productLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + useProductLinkIcon + '&nbsp;' + htmlSpecialChars(record.products_name) + '</a>';
 
-      newCell = newRow.insertCell(1);
-      newCell.innerHTML = record.products_price_formatted;
-	  newCell.align = 'center';
+			newCell = newRow.insertCell(1);
+			newCell.innerHTML = record.products_price_formatted;
+			newCell.align = 'center';
 
-      newCell = newRow.insertCell(2);
-      newCell.innerHTML = htmlSpecialChars(record.products_quantity);
-	  newCell.align = 'center';
+			newCell = newRow.insertCell(2);
+			newCell.innerHTML = htmlSpecialChars(record.products_quantity);
+			newCell.align = 'center';
 	  
-      newCell = newRow.insertCell(3);
-      newCell.innerHTML = useProductLinkStatus;
-	  newCell.align = 'center';	  
+			newCell = newRow.insertCell(3);
+			newCell.innerHTML = useProductLinkStatus;
+			newCell.align = 'center';	  
 
-      newCell = newRow.insertCell(4);
-      newCell.innerHTML = '<a href="' + productEditLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productEditLinkIcon + '</a>&nbsp;<a href="' + productCopyLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productCopyLinkIcon + '</a>&nbsp;<a href="' + productDeleteLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productDeleteLinkIcon + '</a>&nbsp;<a href="' + productXsellLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productXsellLinkIcon + '</a>';
-      newCell.align = 'right';
+			newCell = newRow.insertCell(4);
+			newCell.innerHTML = '<a href="' + productEditLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productEditLinkIcon + '</a>&nbsp;<a href="' + productCopyLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productCopyLinkIcon + '</a>&nbsp;<a href="' + productDeleteLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productDeleteLinkIcon + '</a>&nbsp;<a href="' + productXsellLink.replace('PRODUCTID', parseInt(record.products_id)) + '">' + productXsellLinkIcon + '</a>';
+			newCell.align = 'right';
 
-      newCell = newRow.insertCell(5);
-      newCell.innerHTML = '<input type="checkbox" name="batch[]" value="' + parseInt(record.products_id) + '" id="batch' + parseInt(record.products_id) + '" />';
-      newCell.align = 'center';
+			newCell = newRow.insertCell(5);
+			newCell.innerHTML = '<input type="checkbox" name="batch[]" value="' + parseInt(record.products_id) + '" id="batch' + parseInt(record.products_id) + '" />';
+			newCell.align = 'center';
 
-      rowCounter++;
-    }
-  }
+			rowCounter++;
+		}
+	}
 //--></script>
