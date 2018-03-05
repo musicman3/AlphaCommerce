@@ -17,8 +17,9 @@
   $osC_Tax = new osC_Tax_Admin();
 
   $osC_Weight = new osC_Weight();
-
-  $osC_GeoIP = osC_GeoIP_Admin::load();
+  
+  $osC_GeoIP_Admin = new osC_GeoIP_Admin();
+  $osC_GeoIP = $osC_GeoIP_Admin->load();
 
   if ( $osC_GeoIP->isInstalled() ) {
     $osC_GeoIP->activate();
