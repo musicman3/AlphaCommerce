@@ -187,32 +187,32 @@
                   echo '<td style="color:#FFFFFF" class="dataTableHeadingContent" align="center" nowrap><b>' . $osC_Language->get('heading_product_order') . '</b></td>';
                 echo '</tr>';
                 
-                $XarticleList = $osC_Database->query('select products_xsell_id, sort_order from :table_products_xsell where products_id = :add_related_products_id');
-                $XarticleList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
-                $XarticleList->bindInt(':add_related_products_id', $_GET['add_related_products_ID']);
-                $XarticleList->execute();
+                $XproductsList = $osC_Database->query('select products_xsell_id, sort_order from :table_products_xsell where products_id = :add_related_products_id');
+                $XproductsList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
+                $XproductsList->bindInt(':add_related_products_id', $_GET['add_related_products_ID']);
+                $XproductsList->execute();
                 
-                $ordering_size = $XarticleList->numberOfRows();
+                $ordering_size = $XproductsList->numberOfRows();
                 $articles_data = array();                
                 $i=0;                
 
-                while ($XarticleList->next()) {
-                  array_push($articles_data, $XarticleList->value('sort_order'));                  
+                while ($XproductsList->next()) {
+                  array_push($articles_data, $XproductsList->value('sort_order'));                  
 
-                    $XarticlepList = $osC_Database->query('select p.products_id, pd.products_name, pd.products_description
+                    $XproductspList = $osC_Database->query('select p.products_id, pd.products_name, pd.products_description
                                                            from :table_products p, :table_productsdesc pd
                                                            where pd.products_id = p.products_id and pd.language_id = :language_id and
                                                            p.products_id = :prod_xsellid');
-                    $XarticlepList->bindTable(':table_products', TABLE_PRODUCTS);
-                    $XarticlepList->bindTable(':table_productsdesc', TABLE_PRODUCTS_DESCRIPTION);
-                    $XarticlepList->bindInt(':language_id', $osC_Language->getID()); //for this query                    
-                    $XarticlepList->bindInt(':prod_xsellid', $XarticleList->value('products_xsell_id'));
-                    $XarticlepList->execute();
+                    $XproductspList->bindTable(':table_products', TABLE_PRODUCTS);
+                    $XproductspList->bindTable(':table_productsdesc', TABLE_PRODUCTS_DESCRIPTION);
+                    $XproductspList->bindInt(':language_id', $osC_Language->getID()); //for this query                    
+                    $XproductspList->bindInt(':prod_xsellid', $XproductsList->value('products_xsell_id'));
+                    $XproductspList->execute();
               
                     echo '<tr class="dataTableContentRow" bgcolor="#FFFFFF">';
-                    echo '<td class="dataTableContent" align="center" nowrap>' . $XarticlepList->value('products_id') . '</td>';
-                      echo '<td class="dataTableContent" align="left" nowrap>&nbsp;&nbsp;&nbsp;' . $XarticlepList->value('products_name') . '</td>';                    
-                      echo '<td class="dataTableContent" align="center" nowrap"><select name="' . $XarticlepList->value('products_id') . '">';
+                    echo '<td class="dataTableContent" align="center" nowrap>' . $XproductspList->value('products_id') . '</td>';
+                      echo '<td class="dataTableContent" align="left" nowrap>&nbsp;&nbsp;&nbsp;' . $XproductspList->value('products_name') . '</td>';                    
+                      echo '<td class="dataTableContent" align="center" nowrap"><select name="' . $XproductspList->value('products_id') . '">';
                            for ($y=1;$y<=$ordering_size;$y++) {
                                 echo "<option value=\"$y\"";
                                     if (!(strcmp($y, "$articles_data[$i]"))) {echo " SELECTED";}
