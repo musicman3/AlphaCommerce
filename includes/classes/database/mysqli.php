@@ -23,13 +23,13 @@
       $this->password = $password;
 
       if ($this->is_connected === false) {
-        $this->connect();
+        $this->connect_base();
       }
     }
 
-    function connect() {
+    function connect_base() {
       if (defined('USE_PCONNECT') && (USE_PCONNECT == 'true')) {
-        $connect_function = 'mysqli_pconnect';
+        $connect_function = 'mysql_pconnect';
       } else {
         $connect_function = 'mysqli_connect';
       }

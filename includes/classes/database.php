@@ -29,7 +29,7 @@
         $logging_transaction = false,
         $logging_transaction_action = false;
 
-    function &connect($server, $username, $password, $type = DB_DATABASE_CLASS) {
+    function connect($server, $username, $password, $type = DB_DATABASE_CLASS) {
       require('database/' . $type . '.php');
 
       $class = 'osC_Database_' . $type;
