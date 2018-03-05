@@ -21,14 +21,14 @@
 /* Class constructor */
 
     function osC_Summary_administrators_log() {
-      global $osC_Language;
+      global $osC_Language, $osC_Access;
 
       $osC_Language->loadIniFile('modules/summary/administrators_log.php');
 
       $this->_title = $osC_Language->get('summary_administrators_log_title');
       $this->_title_link = osc_href_link_admin(FILENAME_DEFAULT, 'administrators_log');
 
-      if ( osC_Access::hasAccess('administrators_log') ) {
+      if ( $osC_Access->hasAccess('administrators_log') ) {
         $this->_setData();
       }
     }

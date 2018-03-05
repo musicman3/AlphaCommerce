@@ -23,14 +23,14 @@
 /* Class constructor */
 
     function __construct() {
-      global $osC_Language;
+      global $osC_Language, $osC_Access;
 
       $osC_Language->loadIniFile('modules/summary/error_log.php');
 
       $this->_title = $osC_Language->get('summary_error_log_title');
       $this->_title_link = osc_href_link_admin(FILENAME_DEFAULT, 'error_log');
 
-      if ( osC_Access::hasAccess('error_log') ) {
+      if ( $osC_Access->hasAccess('error_log') ) {
         $this->_setData();
       }
     }

@@ -21,14 +21,14 @@ as published by the Free Software Foundation.
 		/* Class constructor */
 
 		function osC_Summary_reviews() {
-			global $osC_Language;
+			global $osC_Language, $osC_Access;
 
 			$osC_Language->loadIniFile('modules/summary/reviews.php');
 
 			$this->_title = $osC_Language->get('summary_reviews_title');
 			$this->_title_link = osc_href_link_admin(FILENAME_DEFAULT, 'reviews');
 
-			if ( osC_Access::hasAccess('reviews') ) {
+			if ( $osC_Access->hasAccess('reviews') ) {
 				$this->_setData();
 			}
 		}

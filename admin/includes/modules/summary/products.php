@@ -23,14 +23,14 @@
 /* Class constructor */
 
     function osC_Summary_products() {
-      global $osC_Language;
+      global $osC_Language, $osC_Access;
 
       $osC_Language->loadIniFile('modules/summary/products.php');
 
       $this->_title = $osC_Language->get('summary_products_title');
       $this->_title_link = osc_href_link_admin(FILENAME_DEFAULT, 'products');
 
-      if ( osC_Access::hasAccess('products') ) {
+      if ( $osC_Access->hasAccess('products') ) {
         $this->_setData();
       }
     }

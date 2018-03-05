@@ -21,14 +21,14 @@ as published by the Free Software Foundation.
 		/* Class constructor */
 
 		function osC_Summary_customers() {
-			global $osC_Language;
+			global $osC_Language, $osC_Access;
 
 			$osC_Language->loadIniFile('modules/summary/customers.php');
 
 			$this->_title = $osC_Language->get('summary_customers_title');
 			$this->_title_link = osc_href_link_admin(FILENAME_DEFAULT, 'customers');
 
-			if ( osC_Access::hasAccess('customers') ) {
+			if ( $osC_Access->hasAccess('customers') ) {
 				$this->_setData();
 			}
 		}
