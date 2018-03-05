@@ -30,6 +30,97 @@
 
 <?php
 
+    if ( !isset($_GET['add_related_products_ID']) ) {
+        // built main cms list
+        
+        $XproductsList = $osC_Database->query('select distinct d.products_id, d.products_name, x.products_id from :table_products_xsell x, :table_products_description d where d.products_id = x.products_id and d.language_id = :language_id order by d.products_name');
+        $XproductsList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL);
+        $XproductsList->bindTable(':table_products_description', TABLE_PRODUCTS_DESCRIPTION); //d
+        $XproductsList->bindInt(':language_id', $osC_Language->getID());
+        $XproductsList->setBatchLimit($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, (!empty($_GET['page']) ? 'distinct x.products_id' : ''));
+        $XproductsList->execute();
+?>
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
+  <tr>
+    <td><?php echo $XproductsList->getBatchTotalPages($osC_Language->get('batch_results_number_of_entries')); ?></td>
+    <td align="right"><?php echo $XproductsList->getBatchPageLinks('&action=xsell&page', $osC_Template->getModule(), false); ?></td>
+  </tr>
+</table>
+<?php
+        echo '<table width="100%" border="0" cellspacing="1" cellpadding="3" style="color:#FFFFFF" bgcolor="#1D65A4">';
+        echo '<tr class="dataTableHeadingRow">';
+        echo '<td class="dataTableHeadingContent" align="center" nowrap><b>ID</b></td>';
+        echo '<td class="dataTableHeadingContent" align="center" nowrap><b>' . $osC_Language->get('heading_product_name') . '</b></td>';
+        echo '<td class="dataTableHeadingContent" align="center" nowrap><b>' . $osC_Language->get('heading_cross_association') . '</b></td>';
+        echo '<td class="dataTableHeadingContent" colspan="3" align="center" nowrap><b>' . $osC_Language->get('heading_cross_sell_actions').'</b>';
+        echo '</td>';
+        echo '</tr>';
+
+              while ($XproductsList->next()) {
+                /* now we will query the DB for existing related items */
+              
+                $XpList = $osC_Database->query('select pd.products_name, ax.products_xsell_id from :table_products_xsell ax, :table_products_description pd where pd.products_id = ax.products_xsell_id and ax.products_id = :products_idfirst and pd.language_id = :language_id2 order by ax.sort_order');
+                $XpList->bindTable(':table_products_xsell', TABLE_PRODUCTS_XSELL); //ax
+                $XpList->bindTable(':table_products_description', TABLE_PRODUCTS_DESCRIPTION); //pd
+                $XpList->bindInt(':products_idfirst', $XproductsList->value('products_id')); //from previous query
+                $XpList->bindInt(':language_id2', $osC_Language->getID()); //for this query
+                $XpList->execute();
+                          
+                echo '<tr style="color:#000000" bgcolor="#F5F5F5">';
+                echo '<td class=\"dataTableContent\" align="center">&nbsp;' . $XproductsList->value('products_id') . '&nbsp;</td>';
+                echo '<td class=\"dataTableContent\" valign=\"top\">&nbsp;' . $XproductsList->value('products_name') . '&nbsp;</td>';
+
+                // Related_items from XpList products_name
+                $Related_items = $XpList->value('products_name');
+                $Number_row = 0;
+                $Number_row = $XpList->numberOfRows();
+
+
+                if ($Related_items) {
+                    echo '<td class="dataTableContent" valign="top">' .
+                          '<ol>';
+                    echo '<li>'. $XpList->value('products_name') . '&nbsp;&nbsp;' .
+                          '</li>';
+                    
+                    while ($XpList->next()) {
+                       echo '<li>'. $XpList->value('products_name') . '&nbsp;&nbsp;</li>';
+                  
+                    }
+                       echo '</ol></td>';
+                } else {
+                    echo '<td class=\"dataTableContent\" align="center">--</td>';                
+                }
+                
+                    
+                    /* New design */     
+                    echo '<td class="dataTableContent" align="center" valign="center"><input type="button" value="' .
+                         $osC_Language->get('button_add_remove') . '" onclick="document.location.href=\'' .
+                         osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&action=xsell' .
+                         '&add_related_products_ID=' . $XproductsList->value('products_id')) . '\';" class="infoBoxButton" />' .
+                         '</td>';
+
+                    
+                    if ( $Number_row > 1 ) {
+                    
+                    /* Classical view */
+/*                      echo '<td class="dataTableContent" valign="top">&nbsp;<a href="' . osc_href_link(FILENAME_DEFAULT, 'sort=1&add_related_article_ID=' . $XproductsList->value('cms_id'), 'NONSSL') . '">Sort</a>&nbsp;</td>'; */
+
+                    /* New design */
+                    echo '<td class="dataTableContent" align="center" valign="center"><input type="button" value="' .
+                         $osC_Language->get('button_sort') . '" onclick="document.location.href=\'' .
+                         osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&action=xsell&sort=1' .
+                         '&add_related_products_ID=' . $XproductsList->value('products_id')) . '\';" class="infoBoxButton" />' . '</td>';
+                         
+                    } else { echo '<td class="dataTableContent" align="center" valign="center">&nbsp;</td>'; }
+                    echo "</tr>";
+                    unset($Related_items);
+            }
+
+
+        echo '</table>';
+        
+    }   // the end of -> if (!$add_related_article_ID)
+
 // *************************************************************************************************************************************  
 // Draw category pull down menu   
     if (isset($_GET['add_related_products_ID']) && !$_POST && !isset($_GET['sort'])) {
@@ -193,11 +284,11 @@
                 $XproductsList->execute();
                 
                 $ordering_size = $XproductsList->numberOfRows();
-                $xproducts_data = array();                
+                $articles_data = array();                
                 $i=0;                
 
                 while ($XproductsList->next()) {
-                  array_push($xproducts_data, $XproductsList->value('sort_order'));                  
+                  array_push($articles_data, $XproductsList->value('sort_order'));                  
 
                     $XproductspList = $osC_Database->query('select p.products_id, pd.products_name, pd.products_description
                                                            from :table_products p, :table_productsdesc pd
@@ -215,7 +306,7 @@
                       echo '<td class="dataTableContent" align="center" nowrap"><select name="' . $XproductspList->value('products_id') . '">';
                            for ($y=1;$y<=$ordering_size;$y++) {
                                 echo "<option value=\"$y\"";
-                                    if (!(strcmp($y, "$xproducts_data[$i]"))) {echo " SELECTED";}
+                                    if (!(strcmp($y, "$articles_data[$i]"))) {echo " SELECTED";}
                                     echo ">$y</option>";
                             }
                         echo '</select></td>';
