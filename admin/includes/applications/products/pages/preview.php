@@ -11,6 +11,7 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
+  $osC_DateTime = new osC_DateTime();
 
   $Qp = $osC_Database->query('select p.products_id, p.products_quantity, p.products_price, p.products_model, p.products_weight, p.products_weight_class, p.products_date_added, p.products_last_modified, p.products_status, p.products_tax_class_id, p.manufacturers_id, i.image from :table_products p left join :table_products_images i on (p.products_id = i.products_id and default_flag = :default_flag) where p.products_id = :products_id');
   $Qp->bindTable(':table_products', TABLE_PRODUCTS);
@@ -91,7 +92,7 @@
 //    if ($osC_ObjectInfo->get('products_date_available') > date('Y-m-d')) {
 //      echo '<p align="center">' . sprintf($osC_Language->get('product_date_available'), osC_DateTime::getLong($osC_ObjectInfo->get('products_date_available'))) . '</p>';
 //    } else {
-      echo '<p align="left"><br /><b>' . sprintf($osC_Language->get('product_date_added'), osC_DateTime::getLong($osC_ObjectInfo->get('products_date_added'))) . '</b></p>';
+      echo '<p align="left"><br /><b>' . sprintf($osC_Language->get('product_date_added'), $osC_DateTime->getLong($osC_ObjectInfo->get('products_date_added'))) . '</b></p>';
 //    }
 ?>
 
