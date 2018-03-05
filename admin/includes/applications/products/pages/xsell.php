@@ -193,11 +193,11 @@
                 $XproductsList->execute();
                 
                 $ordering_size = $XproductsList->numberOfRows();
-                $articles_data = array();                
+                $xproducts_data = array();                
                 $i=0;                
 
                 while ($XproductsList->next()) {
-                  array_push($articles_data, $XproductsList->value('sort_order'));                  
+                  array_push($xproducts_data, $XproductsList->value('sort_order'));                  
 
                     $XproductspList = $osC_Database->query('select p.products_id, pd.products_name, pd.products_description
                                                            from :table_products p, :table_productsdesc pd
@@ -215,7 +215,7 @@
                       echo '<td class="dataTableContent" align="center" nowrap"><select name="' . $XproductspList->value('products_id') . '">';
                            for ($y=1;$y<=$ordering_size;$y++) {
                                 echo "<option value=\"$y\"";
-                                    if (!(strcmp($y, "$articles_data[$i]"))) {echo " SELECTED";}
+                                    if (!(strcmp($y, "$xproducts_data[$i]"))) {echo " SELECTED";}
                                     echo ">$y</option>";
                             }
                         echo '</select></td>';
