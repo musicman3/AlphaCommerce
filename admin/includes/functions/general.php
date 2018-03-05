@@ -59,6 +59,8 @@
   function osc_get_system_information() {
     global $osC_Database;
 
+    $osC_DateTime = new osC_DateTime();
+
     $Qdb_date = $osC_Database->query('select now() as datetime');
     $Qdb_uptime = $osC_Database->query('show status like "Uptime"');
 
@@ -66,7 +68,7 @@
 
     $db_uptime = intval($Qdb_uptime->valueInt('Value') / 3600) . ':' . str_pad(intval(($Qdb_uptime->valueInt('Value') / 60) % 60), 2, '0', STR_PAD_LEFT);
 
-    return array('date' => osC_DateTime::getShort(null, true),
+    return array('date' => $osC_DateTime->getShort(null, true),
                  'system' => $system,
                  'kernel' => $kernel,
                  'host' => $host,
@@ -78,7 +80,7 @@
                  'db_server' => DB_SERVER,
                  'db_ip' => gethostbyname(DB_SERVER),
 				 'db_version' => 'MySQL ' . (function_exists('mysql_get_server_info') ? $osC_Database->returnVersion() : ''),
-                 'db_date' => osC_DateTime::getShort($Qdb_date->value('datetime'), true),
+                 'db_date' => $osC_DateTime->getShort($Qdb_date->value('datetime'), true),
                  'db_uptime' => $db_uptime);
   }
 
