@@ -104,7 +104,8 @@
 
 // include session class
   require('../includes/classes/session.php');
-  $osC_Session = osC_Session::load('osCAdminID');
+  $osC_Session = new osC_Session();
+  $osC_Session = $osC_Session->load('osCAdminID');
   $osC_Session->start();
 
   if ( !isset($_SESSION['admin']) && (basename($_SERVER['PHP_SELF']) != FILENAME_RPC) ) {
