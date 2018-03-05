@@ -1,7 +1,8 @@
 <?php
 
   // grab the item requested
-  $QinfoDetails = osC_Info::getDetails();
+  $osC_Info = new osC_Info();
+  $QinfoDetails = $osC_Info->getDetails();
   
 ?>
 <h1><?php echo $osC_Template->getPageTitle(); ?></h1>
