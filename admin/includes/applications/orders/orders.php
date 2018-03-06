@@ -213,13 +213,14 @@
       $Qupdate->bindInt(':orders_id', $id);
       $Qupdate->setLogging($_SESSION['module'], $id);
       $Qupdate->execute();
-
+	  
+	  $osC_DateTime = new osC_DateTime();
       if ( !$osC_Database->isError() ) {
 
 				//START TEXT-PLAIN E-MAIL
 				if (EMAIL_USE_HTML == '-1') {
 					if ( $data['notify_customer'] === true ) {
-						$email_body = sprintf($osC_Language->get('email_body'), STORE_NAME, $id, osc_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'orders=' . $id, 'SSL', false, false, true), osC_DateTime::getLong($Qorder->value('date_purchased'))) . "\n\n";
+						$email_body = sprintf($osC_Language->get('email_body'), STORE_NAME, $id, osc_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'orders=' . $id, 'SSL', false, false, true), $osC_DateTime->getLong($Qorder->value('date_purchased'))) . "\n\n";
 
 						if ( $data['append_comment'] === true ) {
 							$email_body .= sprintf($osC_Language->get('email_body_comment'), $data['comment']) . "\n\n";
@@ -236,7 +237,7 @@
 				//START TEXT-HTML E-MAIL
 				if (EMAIL_USE_HTML == '1') {
 					if ( $data['notify_customer'] === true ) {
-						$email_body = sprintf(nl2br($osC_Language->get('email_body_html')), STORE_NAME, $id, osc_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'orders=' . $id, 'SSL', false, false, true), osC_DateTime::getLong($Qorder->value('date_purchased'))) . "<br /><br />";
+						$email_body = sprintf(nl2br($osC_Language->get('email_body_html')), STORE_NAME, $id, osc_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'orders=' . $id, 'SSL', false, false, true), $osC_DateTime->getLong($Qorder->value('date_purchased'))) . "<br /><br />";
 
 						if ( $data['append_comment'] === true ) {
 							$email_body .= nl2br(sprintf($osC_Language->get('email_body_comment_html'), $data['comment'])) . "<br /><br />";
