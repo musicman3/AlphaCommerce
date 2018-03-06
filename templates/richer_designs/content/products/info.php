@@ -218,8 +218,9 @@
 	<div class="submitFormButtons" style="text-align: right;">
 
 		<?php
+			$osC_Reviews = new osC_Reviews();
 			if ($osC_Services->isStarted('reviews')) {
-				echo $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_PRODUCTS, 'reviews&' . osc_get_all_get_params()), 'icon' => 'comment', 'title' => $osC_Language->get('button_reviews') .' ('. osC_Reviews::getTotal(osc_get_product_id($osC_Product->getID())).')'));
+				echo $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_PRODUCTS, 'reviews&' . osc_get_all_get_params()), 'icon' => 'comment', 'title' => $osC_Language->get('button_reviews') .' ('. $osC_Reviews->getTotal(osc_get_product_id($osC_Product->getID())).')'));
 			}
 		?>
 
