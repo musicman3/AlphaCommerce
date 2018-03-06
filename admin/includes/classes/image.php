@@ -94,12 +94,22 @@
 
         list($orig_width, $orig_height) = getimagesize(DIR_FS_CATALOG . DIR_WS_IMAGES . 'products/' . $this->_groups[1]['code'] . '/' . $image);
 
+        if ($orig_width < $orig_height){
         $height = $this->_groups[$group_id]['size_height'];
 
         if ($this->_groups[$group_id]['force_size'] == '1') {
           $width = $this->_groups[$group_id]['size_width'];
         } else {
           $width = round($orig_width * $height / $orig_height);
+        }
+        } else {
+        $width = $this->_groups[$group_id]['size_width'];
+
+        if ($this->_groups[$group_id]['force_size'] == '1') {
+          $height = $this->_groups[$group_id]['size_height'];
+        } else {
+          $height = round($orig_height * $width / $orig_width);
+        } 
         }
 
         $im_p = imagecreatetruecolor($width, $height);
