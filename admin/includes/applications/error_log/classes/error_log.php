@@ -36,10 +36,9 @@
       }
 
       foreach ( $messages as $message ) {
-        if ( preg_match('/^\[([0-9]{2})-([A-Za-z]{3})-([0-9]{4}) ([0-9]{2}):([0-5][0-9]):([0-5][0-9])\] (.*)$/', $message) ) {
+        
           $result['entries'][] = array('date' => substr($message, 1, 20),
-                                       'message' => substr($message, 23));
-        }
+                                       'message' => strstr($message, 'PHP'));
       }
 
       return $result;
@@ -57,7 +56,7 @@
       }
 
       foreach ( $messages as $key => $message ) {
-        if ( !preg_match('/^\[([0-9]{2})-([A-Za-z]{3})-([0-9]{4}) ([0-9]{2}):([0-5][0-9]):([0-5][0-9])\] (.*)' . preg_replace('/[^A-Za-z0-9s]/', '', $search) . '(.*)$/i', $message) ) {
+        if ( !preg_match('/^\[.*] (.*)' . preg_replace('/[^A-Za-z0-9s]/', '', $search) . '(.*)$/i', $message) ) {
           unset($messages[$key]);
         }
       }
@@ -71,7 +70,7 @@
 
       foreach ( $messages as $message ) {
         $result['entries'][] = array('date' => substr($message, 1, 20),
-                                     'message' => substr($message, 23));
+                                     'message' => strstr($message, 'PHP'));
       }
 
       return $result;
