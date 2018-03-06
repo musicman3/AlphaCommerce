@@ -54,13 +54,13 @@
                                         $this->_content .= '<div style="clear: both; height: 15px;"></div>';
                                         $product = new osC_Product($XproductsList->valueInt('products_id'));
 						if ( $osC_Product->hasVariants() ) {
-					$this->_content .= '<div id="product-listing-module"><div class="productListing-data-image">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $osC_Image->show($XproductsList->value('image'), $XproductsList->value('products_name'), null, 'thumbnails')) . '</div>';
+					$this->_content .= '<div style="float:left; width: 33%;" align="center"><div class="productListing-data-image">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $osC_Image->show($XproductsList->value('image'), $XproductsList->value('products_name'), null, 'thumbnails')) . '</div>';
                                         $this->_content .= '<div class="productListing-data-name">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $XproductsList->value('products_name')) . '</div>';
                                         $this->_content .= '<div class="productListing-data-price">' . $product->getPriceFormated(true) . '</div>';
 					$this->_content .= '<div class="productListing-data-buy">' . $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(basename($_SERVER['SCRIPT_FILENAME']), $XproductsList->value('products_keyword') . '&action=cart_add'), 'icon' => 'cart', 'title' => $osC_Language->get('button_buy_now'))) . '</div>';
 					$this->_content .= '</div>';
                                                 } else {
-                			$this->_content .= '<div id="product-listing-module"><div class="productListing-data-image">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $osC_Image->show($XproductsList->value('image'), $XproductsList->value('products_name'), null, 'thumbnails')) . '</div>';
+                			$this->_content .= '<div style="float:left; width: 33%;" align="center"><div class="productListing-data-image">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $osC_Image->show($XproductsList->value('image'), $XproductsList->value('products_name'), null, 'thumbnails')) . '</div>';
                                         $this->_content .= '<div class="productListing-data-name">' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $XproductsList->value('products_keyword')), $XproductsList->value('products_name')) . '</div>';
                                         $this->_content .= '<div class="productListing-data-price">' . $product->getPriceFormated(true) . '</div>';
 					$this->_content .= '<div class="productListing-data-buy">' . $osC_Template->osc_draw_image_jquery_button_buy(array('buy' => $XproductsList->value('products_keyword'), 'icon' => 'cart', 'title' => $osC_Language->get('button_buy_now'))) . '</div>';
