@@ -27,11 +27,12 @@
 
     public static function parse($module) {
       $module = basename($module);
+      $osC_Actions_Temp = 'osC_Actions_' . $module;
 
       if ( !empty($module) && file_exists('includes/modules/actions/' . $module . '.php') ) {
         include('includes/modules/actions/' . $module . '.php');
 
-        call_user_func(array('osC_Actions_' . $module, 'execute'));
+        call_user_func(array(new $osC_Actions_Temp, 'execute'));
       }
     }
   }

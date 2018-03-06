@@ -73,6 +73,8 @@
 
     public function synchronizeWithDatabase() {
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer, $osC_Specials;
+      $osC_DateTime = new osC_DateTime;
+      $osC_Variants = new osC_Variants;
 
       if ( !$osC_Customer->isLoggedOn() ) {
         return false;
@@ -188,7 +190,7 @@
                                                                     'quantity' => $Qproducts->valueInt('quantity'),
                                                                     'weight' => $Qproducts->value('products_weight'),
                                                                     'tax_class_id' => $Qproducts->valueInt('products_tax_class_id'),
-                                                                    'date_added' => osC_DateTime::getShort($Qproducts->value('date_added')),
+                                                                    'date_added' => $osC_DateTime->getShort($Qproducts->value('date_added')),
                                                                     'weight_class_id' => $Qproducts->valueInt('products_weight_class'));
 
           if ( $Qproducts->valueInt('parent_id') > 0 ) {
@@ -209,7 +211,7 @@
 
               if ( $Qvariant->numberOfRows() > 0 ) {
                 while ( $Qvariant->next() ) {
-                  $group_title = osC_Variants::getGroupTitle($Qvariant->value('module'), $Qvariant->toArray());
+                  $group_title = $osC_Variants->getGroupTitle($Qvariant->value('module'), $Qvariant->toArray());
                   $value_title = $Qvariant->value('value_title');
                   $has_custom_value = false;
 
@@ -301,6 +303,7 @@
 
     public function add($product_id, $quantity = null) {
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer;
+      $osC_DateTime = new osC_DateTime;
 
       if ( !is_numeric($product_id) ) {
         return false;
@@ -366,7 +369,7 @@
               $item_id = max(array_keys($this->_contents)) + 1;
             }
           }
-
+          
           $this->_contents[$item_id] = array('item_id' => $item_id,
                                              'id' => $product_id,
                                              'parent_id' => $Qproduct->valueInt('parent_id'),
@@ -378,7 +381,7 @@
                                              'quantity' => $quantity,
                                              'weight' => $Qproduct->value('products_weight'),
                                              'tax_class_id' => $Qproduct->valueInt('products_tax_class_id'),
-                                             'date_added' => osC_DateTime::getShort(osC_DateTime::getNow()),
+                                             'date_added' => $osC_DateTime->getShort($osC_DateTime->getNow()),
                                              'weight_class_id' => $Qproduct->valueInt('products_weight_class'));
 
           if ( $osC_Customer->isLoggedOn() ) {
@@ -403,9 +406,9 @@
             $Qvariant->execute();
 
             while ( $Qvariant->next() ) {
-              $group_title = osC_Variants::getGroupTitle($Qvariant->value('module'), $Qvariant->toArray());
-              $value_title = osC_Variants::getValueTitle($Qvariant->value('module'), $Qvariant->toArray());
-              $has_custom_value = osC_Variants::hasCustomValue($Qvariant->value('module'));
+              $group_title = $osC_Variants->getGroupTitle($Qvariant->value('module'), $Qvariant->toArray());
+              $value_title = $osC_Variants->getValueTitle($Qvariant->value('module'), $Qvariant->toArray());
+              $has_custom_value = $osC_Variants->hasCustomValue($Qvariant->value('module'));
 
               $this->_contents[$item_id]['variants'][] = array('group_id' => $Qvariant->valueInt('group_id'),
                                                                'value_id' => $Qvariant->valueInt('value_id'),
