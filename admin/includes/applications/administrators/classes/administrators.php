@@ -353,7 +353,7 @@
         $module = 'osC_Access_' . ucfirst($module);
         $module = new $module();
 
-        $modules[osC_Access::getGroupTitle( $module->getGroup() )][] = array('id' => $module->getModule(),
+        $modules[$module->getGroupTitle( $module->getGroup() )][] = array('id' => $module->getModule(),
                                                                              'text' => $module->getTitle());
       }
 
