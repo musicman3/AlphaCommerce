@@ -12,6 +12,7 @@
 access_products_title = Products
 access_products_new_title = New Product
 access_products_xsell_title = Attached
+access_product_xsell_title = Related products
 button_products_module = Product Catalog
 button_category_select = Select
 select_category = Select Category

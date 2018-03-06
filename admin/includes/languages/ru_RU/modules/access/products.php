@@ -12,6 +12,7 @@
 access_products_title = Товары
 access_products_new_title = Новый товар
 access_products_xsell_title = Прикрепить
+access_product_xsell_title = Сопутствующие товары
 button_products_module = Каталог товаров
 button_category_select = Выбрать
 select_category = Выбрать категорию
