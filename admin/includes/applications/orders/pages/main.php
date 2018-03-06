@@ -115,13 +115,13 @@
 <?php
   while ( $Qorders->next() ) {
 ?>
-
+	<?php $osC_DateTime = new osC_DateTime(); ?>
     <tr onmouseover="rowOverEffect(this);" onmouseout="rowOutEffect(this);">
       <td><?php echo osc_link_object(osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&' . (isset($_GET['search']) ? 'search=' . $_GET['search'] . '&' : '') . (isset($_GET['status']) ? 'status=' . $_GET['status'] . '&' : '') . (isset($_GET['cID']) ? 'cID=' . $_GET['cID'] . '&' : '') . 'page=' . $_GET['page'] . '&oID=' . $Qorders->valueInt('orders_id') . '&action=save'), osc_icon('orders.png') . '&nbsp;' . $Qorders->valueProtected('customers_name')); ?></td>
       <td align="center"><?php echo $Qorders->value('orders_id'); ?></td>
 	  <td align="center"><?php echo $Qorders->value('customers_id'); ?></td>
 	  <td align="left"><?php echo strip_tags($Qorders->value('order_total')); ?></td>
-      <td align="center"><?php echo osC_DateTime::getShort($Qorders->value('date_purchased'), true); ?></td>
+      <td align="center"><?php echo $osC_DateTime->getShort($Qorders->value('date_purchased'), true); ?></td>
       <td align="left"><?php echo $Qorders->value('orders_status_name'); ?></td>
       <td align="right">
 

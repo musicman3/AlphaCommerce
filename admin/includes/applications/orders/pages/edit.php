@@ -16,7 +16,9 @@
   $osC_Tax = new osC_Tax_Admin();
 
   $osC_Order = new osC_Order($_GET['oID']);
-
+  $osC_DateTime = new osC_DateTime();
+  $osC_Address = new osC_Address();
+  
   if ( !$osC_Order->isValid() ) {
     $osC_MessageStack->add($osC_Template->getModule(), sprintf(ERROR_ORDER_DOES_NOT_EXIST, $_GET['oID']), 'error');
   }
@@ -86,7 +88,7 @@
           <fieldset style="border: 0; height: 100%;">
             <legend style="margin-left: -20px; font-weight: bold;"><?php echo osc_icon('personal.png') . ' ' . $osC_Language->get('subsection_customer'); ?></legend>
 
-            <p><?php echo osC_Address::format($osC_Order->getCustomer(), '<br />'); ?></p>
+            <p><?php echo $osC_Address->format($osC_Order->getCustomer(), '<br />'); ?></p>
             <p><?php echo osc_icon('telephone.png') . ' ' . $osC_Order->getCustomer('telephone') . '<br />' . osc_icon('email_send.png') . ' ' . $osC_Order->getCustomer('email_address'); ?></p>
           </fieldset>
         </td>
@@ -94,14 +96,14 @@
           <fieldset style="border: 0; height: 100%;">
             <legend style="margin-left: -20px; font-weight: bold;"><?php echo osc_icon('home.png') . ' ' . $osC_Language->get('subsection_shipping_address'); ?></legend>
 
-            <p><?php echo osC_Address::format($osC_Order->getDelivery(), '<br />'); ?></p>
+            <p><?php echo $osC_Address->format($osC_Order->getDelivery(), '<br />'); ?></p>
           </fieldset>
         </td>
         <td width="33%" valign="top">
           <fieldset style="border: 0; height: 100%;">
             <legend style="margin-left: -20px; font-weight: bold;"><?php echo osc_icon('bill.png') . ' ' . $osC_Language->get('subsection_billing_address'); ?></legend>
 
-            <p><?php echo osC_Address::format($osC_Order->getBilling(), '<br />'); ?></p>
+            <p><?php echo $osC_Address->format($osC_Order->getBilling(), '<br />'); ?></p>
           </fieldset>
         </td>
       </tr>
@@ -143,8 +145,8 @@
         <td width="33%" valign="top">
           <fieldset style="border: 0; height: 100%;">
             <legend style="margin-left: -20px; font-weight: bold;"><?php echo osc_icon('history.png') . ' ' . $osC_Language->get('subsection_status'); ?></legend>
-
-            <p><?php echo $osC_Order->getStatus() . '<br />' . ($osC_Order->getDateLastModified() > $osC_Order->getDateCreated() ? osC_DateTime::getShort($osC_Order->getDateLastModified(), true) : osC_DateTime::getShort($osC_Order->getDateCreated(), true)); ?></p>
+			
+            <p><?php echo $osC_Order->getStatus() . '<br />' . ($osC_Order->getDateLastModified() > $osC_Order->getDateCreated() ? $osC_DateTime->getShort($osC_Order->getDateLastModified(), true) : $osC_DateTime->getShort($osC_Order->getDateCreated(), true)); ?></p>
             <p><?php echo $osC_Language->get('number_of_comments') . ' ' . $osC_Order->getNumberOfComments(); ?></p>
           </fieldset>
         </td>
@@ -246,7 +248,7 @@
 ?>
 
         <tr>
-          <td valign="top"><?php echo osC_DateTime::getShort($history['date_added'], true); ?></td>
+          <td valign="top"><?php echo $osC_DateTime->getShort($history['date_added'], true); ?></td>
           <td valign="top"><?php echo ( !empty($history['status']) ) ? $history['status'] : $history['status_id']; ?></td>
           <td valign="top" align="center"><?php echo osc_icon(($history['return_status'] === 1 ? 'checkbox_ticked.gif' : 'checkbox_crossed.gif'), null, null); ?></td>
           <td valign="top"><?php echo nl2br($history['return_value']); ?></td>
@@ -294,7 +296,7 @@
 ?>
 
         <tr>
-          <td align="left" valign="top"><?php echo osC_DateTime::getShort($status_history['date_added'], true); ?></td>
+          <td align="left" valign="top"><?php echo $osC_DateTime->getShort($status_history['date_added'], true); ?></td>
           <td align="left" valign="top"><?php echo $status_history['status']; ?></td>
           <td valign="top"><?php echo nl2br($status_history['comment']); ?></td>
           <td align="right" valign="top"><?php echo osc_icon((($status_history['customer_notified'] === 1) ? 'checkbox_ticked.gif' : 'checkbox_crossed.gif'), null, null); ?></td>
