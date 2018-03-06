@@ -39,8 +39,8 @@
           break;
         }
 
-        if (($id !== false) && osC_Product::checkEntry($id)) {
           $osC_Product = new osC_Product($id);
+        if (($id !== false) && $osC_Product->checkEntry($id)) {
           $osC_Product->incrementCounter();
 
           $this->addPageTags('keywords', $osC_Product->getTitle());
@@ -52,7 +52,8 @@
 
           $this->addJavascriptFilename('templates/' . $this->getCode() . '/javascript/' . $this->_group . '/info.js');
 
-          osC_Services_category_path::process($osC_Product->getCategoryID());
+          $osC_Services_category_path = new osC_Services_category_path();
+          $osC_Services_category_path->process($osC_Product->getCategoryID());
 
           if ($osC_Services->isStarted('breadcrumb')) {
             $osC_Breadcrumb->add($osC_Product->getTitle(), osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword()));
