@@ -14,7 +14,8 @@
 */
 
   // grab the item requested
-  $QcmsDetails = osC_Cms::getDetails();
+  $osC_Cms = new osC_Cms();
+  $QcmsDetails = $osC_Cms->getDetails();
   
 ?>
 <h1><?php echo $osC_Template->getPageTitle(); ?></h1>

@@ -30,10 +30,11 @@
 /* Class constructor */
 
     function osC_Cms_View() {
-      global $osC_Services, $osC_Language, $osC_Breadcrumb, $osC_Cms;
+      global $osC_Services, $osC_Language, $osC_Breadcrumb;
       
    //initialize the page_title
-      $QcmsDetails = osC_Cms::getDetails();
+      $osC_Cms = new osC_Cms();
+      $QcmsDetails = $osC_Cms->getDetails();
       $this->_page_title = $QcmsDetails->value("cms_name");
 
 
