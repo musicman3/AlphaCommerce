@@ -169,11 +169,9 @@
         include('includes/classes/payment.php');
         include('includes/modules/payment/' . $this->_payment_module . '.php');
 		
-		  $osC_Payment_TempVar = 'osC_Payment_' . $this->_payment_module;
-		  $osC_Payment_Temp = new $osC_Payment_TempVar;
+		  $osC_Payment_Temp = 'osC_Payment_' . $this->_payment_module;
 		  
-          //if (call_user_func(array('osC_Payment_' . $this->_payment_module, 'isInstalled')) === true) {		  
-          if (($osC_Payment_Temp->isInstalled()) === true) {	
+          if (call_user_func(array(new $osC_Payment_Temp, 'isInstalled')) === true) {		  
           $trans_array = array();
 
           foreach ($this->getTransactionHistory() as $history) {
@@ -182,7 +180,7 @@
             }
           }
 
-          $transactions = call_user_func(array('osC_Payment_' . $this->_payment_module, 'getPostTransactionActions'), $trans_array);
+          $transactions = call_user_func(array(new $osC_Payment_Temp, 'getPostTransactionActions'), $trans_array);
 
           if (is_array($transactions) && (empty($transactions) === false)) {
             $Qactions = $osC_Database->query('select id, status_name from :table_orders_transactions_status where language_id = :language_id and id in :id order by status_name');
