@@ -168,8 +168,12 @@
       if (file_exists('includes/modules/payment/' . $this->_payment_module . '.php')) {
         include('includes/classes/payment.php');
         include('includes/modules/payment/' . $this->_payment_module . '.php');
-
-        if (call_user_func(array('osC_Payment_' . $this->_payment_module, 'isInstalled')) === true) {
+		
+		  $osC_Payment_TempVar = 'osC_Payment_' . $this->_payment_module;
+		  $osC_Payment_Temp = new $osC_Payment_TempVar;
+		  
+          //if (call_user_func(array('osC_Payment_' . $this->_payment_module, 'isInstalled')) === true) {		  
+          if (($osC_Payment_Temp->isInstalled()) === true) {	
           $trans_array = array();
 
           foreach ($this->getTransactionHistory() as $history) {
