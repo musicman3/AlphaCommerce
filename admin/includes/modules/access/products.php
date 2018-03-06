@@ -26,7 +26,10 @@
 
       $this->_subgroups = array(array('icon' => 'new_product.png',
                                       'title' => $osC_Language->get('access_products_new_title'),
-                                      'identifier' => 'action=save'));
+                                      'identifier' => 'action=save'),
+                                array('icon' => 'application-x-ar.png',
+                                      'title' => $osC_Language->get('access_product_xsell_title'), // xsell
+                                      'identifier' => 'action=xsell'));
     }
   }
 ?>
