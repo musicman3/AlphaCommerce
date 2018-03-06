@@ -60,7 +60,8 @@
           }
 
           if ( (preg_match('/^[0-9]+(#?([0-9]+:?[0-9]+)+(;?([0-9]+:?[0-9]+)+)*)*$/', $key) || preg_match('/^[a-zA-Z0-9 -_]*$/', $key)) && ($key != $osC_Session->getName()) ) {//if ( (ereg('^[0-9]+(#?([0-9]+:?[0-9]+)+(;?([0-9]+:?[0-9]+)+)*)*$', $key) || ereg('^[a-zA-Z0-9 -_]*$', $key)) && ($key != $osC_Session->getName()) ) {
-            if (osC_Product::checkEntry($key) === false) {
+            $osC_Product = new osC_Product($key);
+			if ($osC_Product->checkEntry($key) === false) {
               $this->_page_contents = 'info_not_found.php';
             } elseif ($_GET[$this->_module] == 'new') {
               if ( ($osC_Customer->isLoggedOn() === false ) && (SERVICE_REVIEW_ENABLE_REVIEWS == 1) ) {
@@ -68,8 +69,6 @@
 
                 osc_redirect(osc_href_link(FILENAME_ACCOUNT, 'login', 'SSL'));
               }
-
-              $osC_Product = new osC_Product($key);
 
               $this->_page_title = $osC_Product->getTitle();
               $this->_page_contents = 'reviews_new.php';
