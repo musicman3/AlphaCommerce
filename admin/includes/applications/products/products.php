@@ -92,8 +92,8 @@
                 if ( $error === false ) {
                     $osC_MessageStack->add($this->_module, $osC_Language->get('ms_success_action_performed'), 'success');
                     osc_redirect_admin(osc_href_link_admin(FILENAME_DEFAULT, $this->_module .
-                    '&action=xsell&sort=1&add_related_article_ID=' .
-                    $_GET['add_related_article_ID']));
+                    '&action=xsell&sort=1&add_related_products_ID=' .
+                    $_GET['add_related_products_ID']));
                 }
 
             }
