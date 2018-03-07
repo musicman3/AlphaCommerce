@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Variants_text_field extends osC_Variants_Abstract {
+  class osC_Variants_text_field {
     const ALLOW_MULTIPLE_VALUES = true;
     const HAS_CUSTOM_VALUE = true;
 
@@ -36,7 +36,7 @@
     }
 
     static public function getGroupTitle($data) {
-      return $data['value_title'];
+      return $data['group_title'];
     }
 
     static public function getValueTitle($data) {

@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Variants_radio_buttons extends osC_Variants_Abstract {
+  class osC_Variants_radio_buttons {
     const ALLOW_MULTIPLE_VALUES = false;
     const HAS_CUSTOM_VALUE = false;
 
@@ -35,6 +35,14 @@
                 '</table>';
 
       return $string;
+    }
+
+    static public function getGroupTitle($data) {
+      return $data['group_title'];
+    }
+
+    static public function getValueTitle($data) {
+      return $data['value_title'];
     }
 
     static public function allowsMultipleValues() {
