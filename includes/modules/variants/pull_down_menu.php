@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Variants_pull_down_menu extends osC_Variants_Abstract {
+  class osC_Variants_pull_down_menu {
     const ALLOW_MULTIPLE_VALUES = false;
     const HAS_CUSTOM_VALUE = false;
 
@@ -37,6 +37,14 @@
       return $string;
     }
 
+    static public function getGroupTitle($data) {
+      return $data['group_title'];
+    }
+
+    static public function getValueTitle($data) {
+      return $data['value_title'];
+    }
+	
     static public function allowsMultipleValues() {
       return self::ALLOW_MULTIPLE_VALUES;
     }

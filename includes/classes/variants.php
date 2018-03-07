@@ -11,21 +11,6 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
-
-  abstract class osC_Variants_Abstract {
-    abstract static public function parse($data);
-    abstract static public function allowsMultipleValues();
-    abstract static public function hasCustomValue();
-
-    static public function getGroupTitle($data) {
-      return $data['group_title'];
-    }
-
-    static public function getValueTitle($data) {
-      return $data['value_title'];
-    }
-  }
-
   class osC_Variants {
     static public function parse($module, $data) {
       if ( !class_exists('osC_Variants_' . $module) ) {
