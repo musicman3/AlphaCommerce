@@ -305,6 +305,7 @@
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer;
 
       $osC_DateTime = new osC_DateTime();
+      $osC_Variants = new osC_Variants();
       if ( !is_numeric($product_id) ) {
         return false;
       }
