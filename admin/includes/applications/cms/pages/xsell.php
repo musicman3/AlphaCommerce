@@ -233,7 +233,8 @@
             // rest of hidden data list
                     echo '<div style="display:none">';
 
-                    $result = array_diff($xsell_id_pr, $products_id);
+                    /*$result = array_diff($xsell_id_pr, $products_id);*/
+                    $result = array_diff(array_map('serialize',$xsell_id_pr), array_map('serialize',$products_id));
                     $x = array($result);
                     $labels =array($x);
                     ksort($labels);            
