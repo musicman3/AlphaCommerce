@@ -29,7 +29,7 @@
 
       $data = $Qcategories->toArray();
 
-      $data['childs_count'] = sizeof($osC_CategoryTree->getChildren($Qcategories->valueInt('categories_id'), $dummy = array()));
+      $data['childs_count'] = $Qcategories->valueInt('categories_id');
       $data['products_count'] = $osC_CategoryTree->getNumberOfProducts($Qcategories->valueInt('categories_id'));
 
       $Qcategories->freeResult();
