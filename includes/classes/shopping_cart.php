@@ -73,9 +73,9 @@
 
     public function synchronizeWithDatabase() {
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer, $osC_Specials;
-      $osC_DateTime = new osC_DateTime;
-      $osC_Variants = new osC_Variants;
 
+      $osC_Variants = new osC_Variants();
+      $osC_DateTime = new osC_DateTime();
       if ( !$osC_Customer->isLoggedOn() ) {
         return false;
       }
@@ -303,8 +303,8 @@
 
     public function add($product_id, $quantity = null) {
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer;
-      $osC_DateTime = new osC_DateTime;
 
+      $osC_DateTime = new osC_DateTime();
       if ( !is_numeric($product_id) ) {
         return false;
       }
@@ -369,7 +369,7 @@
               $item_id = max(array_keys($this->_contents)) + 1;
             }
           }
-          
+
           $this->_contents[$item_id] = array('item_id' => $item_id,
                                              'id' => $product_id,
                                              'parent_id' => $Qproduct->valueInt('parent_id'),
