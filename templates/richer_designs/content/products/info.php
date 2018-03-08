@@ -12,6 +12,10 @@
   as published by the Free Software Foundation.
 */
 ?>
+<?php if (file_exists(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage()) == true) {
+echo osc_image(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage(), null, null, null, 'width="34px" id="pageIcon"');
+} else {}
+?>
 
 <h1><?php echo $osC_Template->getPageTitle(); ?></h1>
 <div>
