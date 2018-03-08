@@ -44,14 +44,16 @@
 
             break;
 
+
           case 'save':
             $this->_page_contents = 'edit.php';
+            $osC_Reviews_Admin = new osC_Reviews_Admin();
 
             if ( isset($_POST['subaction']) && ($_POST['subaction'] == 'confirm') ) {
               $data = array('review' => $_POST['reviews_text'],
                             'rating' => $_POST['reviews_rating']);
-
-              if ( osC_Reviews_Admin::save($_GET['rID'], $data) ) {
+                
+              if ( $osC_Reviews_Admin->save($_GET['rID'], $data) ) {
                 $osC_MessageStack->add($this->_module, $osC_Language->get('ms_success_action_performed'), 'success');
               } else {
                 $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed'), 'error');
@@ -64,9 +66,10 @@
 
           case 'delete':
             $this->_page_contents = 'delete.php';
+            $osC_Reviews_Admin = new osC_Reviews_Admin();
 
             if ( isset($_POST['subaction']) && ($_POST['subaction'] == 'confirm') ) {
-              if ( osC_Reviews_Admin::delete($_GET['rID']) ) {
+              if ( $osC_Reviews_Admin->delete($_GET['rID']) ) {
                 $osC_MessageStack->add($this->_module, $osC_Language->get('ms_success_action_performed'), 'success');
               } else {
                 $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed'), 'error');
@@ -78,6 +81,7 @@
             break;
 
           case 'batchDelete':
+            $osC_Reviews_Admin = new osC_Reviews_Admin();
             if ( isset($_POST['batch']) && is_array($_POST['batch']) && !empty($_POST['batch']) ) {
               $this->_page_contents = 'batch_delete.php';
 
@@ -85,7 +89,7 @@
                 $error = false;
 
                 foreach ($_POST['batch'] as $id) {
-                  if ( !osC_Reviews_Admin::delete($id) ) {
+                  if ( !$osC_Reviews_Admin->delete($id) ) {
                     $error = true;
                     break;
                   }

@@ -35,7 +35,8 @@
 
   <p><?php echo '<b>' . $osC_Language->get('field_product') . '</b><br />' . $osC_ObjectInfo->get('products_name'); ?></p>
   <p><?php echo '<b>' . $osC_Language->get('field_author') . '</b><br />' . osc_output_string_protected($osC_ObjectInfo->get('customers_name')); ?></p>
-  <p><?php echo '<b>' . $osC_Language->get('field_date_added') . '</b><br />' . osC_DateTime::getShort($osC_ObjectInfo->get('date_added')); ?></p>
+  <?php $osC_DateTime = new osC_DateTime(); ?>
+  <p><?php echo '<b>' . $osC_Language->get('field_date_added') . '</b><br />' . $osC_DateTime->getShort($osC_ObjectInfo->get('date_added')); ?></p>
   <p><?php echo '<b>' . $osC_Language->get('field_review') . '</b><br />' . osc_draw_textarea_field('reviews_text', $osC_ObjectInfo->get('reviews_text')); ?></p>
   <p><?php echo '<b>' . $osC_Language->get('field_rating') . '</b><br />' . $osC_Language->get('rating_bad') . '<br /><br />&nbsp;&nbsp;' . osc_draw_radio_field('reviews_rating', $rating_array, $osC_ObjectInfo->get('reviews_rating')) . '&nbsp;' . $osC_Language->get('rating_good'); ?></p>
 
