@@ -50,7 +50,7 @@
       $QcmsBuild->execute();
 
 	  // build the output content for the box
-      $this->_content = '<ol><li class="BoxLine"></li>';
+      $this->_content = '<ol>';
       while ($QcmsBuild->next()) {
         
         $this->_content .= '<li class="BoxLine">' . osc_image('templates/' . $osC_Template->getCode() . '/images/document.png') . '&nbsp;'. osc_link_object(osc_href_link(FILENAME_CMS, 'view=' . $QcmsBuild->value("id")), $QcmsBuild->value("text")) . '</li>';
