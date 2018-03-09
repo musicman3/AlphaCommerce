@@ -107,7 +107,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -182,7 +182,7 @@
       $Qsu->execute();
 
       if ( !$osC_Database->isError() ) {
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -209,7 +209,7 @@
       $Qsu->execute();
 
       if ( !$osC_Database->isError() ) {
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('configuration');
 
         return true;
       }

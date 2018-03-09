@@ -147,7 +147,7 @@
         $osC_Database->commitTransaction();
 
         if ( $default === true ) {
-          osC_CacheClass::clear('configuration');
+          osC_Cache::clear('configuration');
         }
 
         return true;
@@ -191,8 +191,8 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_CacheClass::clear('weight-classes');
-        osC_CacheClass::clear('weight-rules');
+        osC_Cache::clear('weight-classes');
+        osC_Cache::clear('weight-rules');
 
         return true;
       }

@@ -88,10 +88,10 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_CacheClass::clear('images_groups');
+        osC_Cache::clear('images_groups');
 
         if ( $default === true ) {
-          osC_CacheClass::clear('configuration');
+          osC_Cache::clear('configuration');
         }
 
         return true;

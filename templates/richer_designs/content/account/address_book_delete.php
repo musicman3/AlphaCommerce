@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  $Qentry = osC_AddressBookClass::getEntry($_GET['address_book']);
+  $Qentry = osC_AddressBook::getEntry($_GET['address_book']);
 ?>
 
 <?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {
@@ -27,7 +27,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
   <div class="content">
     <div style="float: right; padding: 0px 0px 10px 20px;">
-      <?php echo osC_AddressClass::format($_GET['address_book'], '<br />'); ?>
+      <?php echo osC_Address::format($_GET['address_book'], '<br />'); ?>
     </div>
 
     <div style="float: right; padding: 0px 0px 10px 20px; text-align: center;">

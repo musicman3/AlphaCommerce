@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_CreditCardClass {
+  class osC_CreditCard {
 
 /* Private variables */
 

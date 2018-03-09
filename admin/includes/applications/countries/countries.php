@@ -31,7 +31,7 @@
 
       if ( !empty($_GET[$this->_module]) && is_numeric($_GET[$this->_module]) ) {
         $this->_page_contents = 'zones.php';
-        $this->_page_title .= ': ' . osC_AddressClass::getCountryName($_GET[$this->_module]);
+        $this->_page_title .= ': ' . osC_Address::getCountryName($_GET[$this->_module]);
       }
     }
   }

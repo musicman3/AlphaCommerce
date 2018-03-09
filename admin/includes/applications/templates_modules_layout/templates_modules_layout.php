@@ -147,7 +147,7 @@
       $Qlayout->execute();
 
       if ( !$osC_Database->isError() ) {
-        osC_CacheClass::clear('templates_' . $set . '_layout');
+        osC_Cache::clear('templates_' . $set . '_layout');
 
         return true;
       }
@@ -165,7 +165,7 @@
       $Qdel->execute();
 
       if ( !$osC_Database->isError() ) {
-        osC_CacheClass::clear('templates_' . $set . '_layout');
+        osC_Cache::clear('templates_' . $set . '_layout');
 
         return true;
       }

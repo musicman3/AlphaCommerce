@@ -44,7 +44,7 @@ as published by the Free Software Foundation.
 
 		<?php
 			include('../includes/classes/currencies.php');
-			$osC_Currencies = new osC_CurrenciesClass();
+			$osC_Currencies = new osC_Currencies();
 
 			$orders_statuses = array();
 			$orders_status_array = array();

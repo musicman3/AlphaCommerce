@@ -41,7 +41,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
   <div class="content">
     <table border="0" width="100%" cellspacing="2" cellpadding="4">
-      <tr><?php $osC_DateTime = new osC_DateTimeClass(); ?>
+      <tr><?php $osC_DateTime = new osC_DateTime(); ?>
         <td width="50%" valign="top"><?php echo '<b>' . $osC_Language->get('order_date') . '</b> ' . $osC_DateTime->getLong($Qhistory->value('date_purchased')) . '<br /><b>' . $order_type . '</b> ' . osc_output_string_protected($order_name); ?></td>
         <td width="30%" valign="top"><?php echo '<b>' . $osC_Language->get('order_products') . '</b> ' . $osC_Order->numberOfProducts($Qhistory->valueInt('orders_id')) . '<br /><b>' . $osC_Language->get('order_cost') . '</b> ' . strip_tags($Qhistory->value('order_total')); ?></td>
         <td lass="submitFormButtons" align="right" width="20%"><?php echo $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_ACCOUNT, 'orders=' . $Qhistory->valueInt('orders_id') . (isset($_GET['page']) ? '&page=' . $_GET['page'] : ''), 'SSL'), 'icon' => 'document', 'title' => $osC_Language->get('button_view'))); ?></td>

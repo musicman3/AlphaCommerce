@@ -61,7 +61,7 @@
     function getJavascriptBlock() {
       global $osC_Language, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCardClass();
+      $osC_CreditCard = new osC_CreditCard();
 
       $js = '  if (payment_value == "' . $this->_code . '") {' . "\n" .
             '    var cc_owner = document.checkout_payment.cc_owner.value;' . "\n" .
@@ -202,7 +202,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCardClass($_POST['cc_number'], $_POST['cc_expires_month'], $_POST['cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCard($_POST['cc_number'], $_POST['cc_expires_month'], $_POST['cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['cc_owner']);
 
       if (($result = $osC_CreditCard->isValid(MODULE_PAYMENT_CC_ACCEPTED_TYPES)) !== true) {

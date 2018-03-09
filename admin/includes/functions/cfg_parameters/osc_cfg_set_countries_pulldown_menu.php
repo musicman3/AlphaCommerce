@@ -17,7 +17,7 @@
 
     $countries_array = array();
 
-    foreach (osC_AddressClass::getCountries() as $country) {
+    foreach (osC_Address::getCountries() as $country) {
       $countries_array[] = array('id' => $country['id'],
                                  'text' => $country['name']);
     }

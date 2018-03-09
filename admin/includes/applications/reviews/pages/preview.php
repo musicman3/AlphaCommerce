@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
   $osC_Reviews_Admin = new osC_Reviews_Admin();
-  $osC_DateTime = new osC_DateTimeClass();
+  $osC_DateTime = new osC_DateTime();
   $osC_ObjectInfo = new osC_ObjectInfo(osC_Reviews_Admin::getData($_GET['rID']));
 ?>
 

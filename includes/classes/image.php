@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_ImageClass {
+  class osC_Image {
     var $_groups;
 
     function osC_Image() {

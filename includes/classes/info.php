@@ -1,6 +1,6 @@
 <?php
 
-  class osC_InfoClass {
+  class osC_Info {
 
 
 /* Class constructor */

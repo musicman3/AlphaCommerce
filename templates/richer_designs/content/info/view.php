@@ -1,7 +1,7 @@
 <?php
 
   // grab the item requested
-  $osC_Info = new osC_InfoClass();
+  $osC_Info = new osC_Info();
   $QinfoDetails = $osC_Info->getDetails();
   
 ?>

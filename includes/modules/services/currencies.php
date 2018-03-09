@@ -17,7 +17,7 @@
       global $osC_Language, $osC_Currencies;
 
       include('includes/classes/currencies.php');
-      $osC_Currencies = new osC_CurrenciesClass();
+      $osC_Currencies = new osC_Currencies();
 
       if ((isset($_SESSION['currency']) == false) || isset($_GET['currency']) || ( (USE_DEFAULT_LANGUAGE_CURRENCY == '1') && ($osC_Currencies->getCode($osC_Language->getCurrencyID()) != $_SESSION['currency']) ) ) {
         if (isset($_GET['currency']) && $osC_Currencies->exists($_GET['currency'])) {

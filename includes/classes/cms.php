@@ -9,11 +9,11 @@
  
   Filename cms.php
   Desc Basic CMS system for osCommerce V3.0A5
-  Modify by Gergely Tï¿½th
+  Modify by Gergely Tóth
   http://oscommerce-extra.hu
 */
 
-  class osC_CmsClass {
+  class osC_Cms {
 
 
 /* Class constructor */

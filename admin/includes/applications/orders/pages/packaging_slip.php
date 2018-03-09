@@ -46,7 +46,7 @@ BODY
             <td><b><?php echo $osC_Language->get('subsection_billing_address'); ?></b></td>
           </tr>
           <tr>
-            <td><?php echo osC_AddressClass::format($osC_Order->getBilling(), '<br />'); ?></td>
+            <td><?php echo osC_Address::format($osC_Order->getBilling(), '<br />'); ?></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -63,7 +63,7 @@ BODY
             <td><b><?php echo $osC_Language->get('subsection_shipping_address'); ?></b></td>
           </tr>
           <tr>
-            <td><?php echo osC_AddressClass::format($osC_Order->getDelivery(), '<br />'); ?></td>
+            <td><?php echo osC_Address::format($osC_Order->getDelivery(), '<br />'); ?></td>
           </tr>
         </table></td>
       </tr>

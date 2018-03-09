@@ -38,7 +38,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
   <div class="content">
     <div style="float: right; padding: 0px 0px 10px 20px;">
-      <?php echo osC_AddressClass::format($osC_ShoppingCart->getShippingAddress(), '<br />'); ?>
+      <?php echo osC_Address::format($osC_ShoppingCart->getShippingAddress(), '<br />'); ?>
     </div>
 
     <div style="float: right; padding: 0px 0px 10px 20px; text-align: center;">
@@ -54,7 +54,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 <?php
     }
 
-    if (osC_AddressBookClass::numberOfEntries() > 1) {
+    if (osC_AddressBook::numberOfEntries() > 1) {
 ?>
 
 <div class="moduleBox">
@@ -102,7 +102,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
             <td colspan="3"><table border="0" cellspacing="0" cellpadding="2">
               <tr>
                 <td width="10">&nbsp;</td>
-                <td><?php echo osC_AddressClass::format($Qaddresses->toArray(), ', '); ?></td>
+                <td><?php echo osC_Address::format($Qaddresses->toArray(), ', '); ?></td>
                 <td width="10">&nbsp;</td>
               </tr>
             </table></td>
@@ -125,7 +125,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
     }
   }
 
-  if (osC_AddressBookClass::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES) {
+  if (osC_AddressBook::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES) {
 ?>
 
 <div class="moduleBox">

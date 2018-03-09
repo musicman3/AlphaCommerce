@@ -70,7 +70,7 @@
 			$countries_array = array(array('id' => '',
 			'text' => $osC_Language->get('pull_down_default')));
 
-			foreach (osC_AddressClass::getCountries() as $country) {
+			foreach (osC_Address::getCountries() as $country) {
 				$countries_array[] = array('id' => $country['id'],
 				'text' => $country['name']);
 			}
@@ -111,7 +111,7 @@
 						$zone = $Qentry->value('entry_state');
 
 						if ($Qentry->valueInt('entry_zone_id') > 0) {
-							$zone = osC_AddressClass::getZoneName($Qentry->valueInt('entry_zone_id'));
+							$zone = osC_Address::getZoneName($Qentry->valueInt('entry_zone_id'));
 						}
 					} else {
 						$Qzones = $osC_Database->query('select zone_name from :table_zones where zone_country_id = :zone_country_id order by zone_name');

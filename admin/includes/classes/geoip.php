@@ -148,10 +148,10 @@
         }
       }
 
-      osC_CacheClass::clear('languages');
+      osC_Cache::clear('languages');
 */
 
-      osC_CacheClass::clear('configuration');
+      osC_Cache::clear('configuration');
     }
 
     function remove() {
@@ -185,11 +185,11 @@
           $Qdel->execute();
         }
 
-        osC_CacheClass::clear('languages');
+        osC_Cache::clear('languages');
       }
 */
 
-      osC_CacheClass::clear('configuration');
+      osC_Cache::clear('configuration');
     }
   }
 ?>

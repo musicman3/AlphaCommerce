@@ -112,7 +112,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -136,8 +136,8 @@
 
         $module->install();
 
-        osC_CacheClass::clear('modules-geoip');
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('modules-geoip');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -159,8 +159,8 @@
 
         $module->remove();
 
-        osC_CacheClass::clear('modules-geoip');
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('modules-geoip');
+        osC_Cache::clear('configuration');
 
         return true;
       }

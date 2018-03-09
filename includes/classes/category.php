@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_CategoryClass class manages category information
+ * The osC_Category class manages category information
  */
 
-  class osC_CategoryClass {
+  class osC_Category {
 
 /**
  * An array containing the category information

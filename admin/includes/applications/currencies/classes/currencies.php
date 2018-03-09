@@ -147,10 +147,10 @@
         if ( $osC_Database->isError() === false ) {
           $osC_Database->commitTransaction();
 
-          osC_CacheClass::clear('currencies');
+          osC_Cache::clear('currencies');
 
           if ( ( $set_default === true ) && $Qupdate->affectedRows() ) {
-            osC_CacheClass::clear('configuration');
+            osC_Cache::clear('configuration');
           }
 
           return true;
@@ -178,7 +178,7 @@
         $Qdelete->execute();
 
         if ( $osC_Database->isError() === false ) {
-          osC_CacheClass::clear('currencies');
+          osC_Cache::clear('currencies');
 
           return true;
         }
@@ -212,7 +212,7 @@
         }
       }
 
-      osC_CacheClass::clear('currencies');
+      osC_Cache::clear('currencies');
 
       return $updated;
     }

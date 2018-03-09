@@ -199,7 +199,7 @@
       if ( isset($_GET['action']) && !empty($_GET['action']) ) {
         include('includes/classes/actions.php');
 
-        osC_ActionsClass::parse($_GET['action']);
+        osC_Actions::parse($_GET['action']);
       }
 
       return $object;

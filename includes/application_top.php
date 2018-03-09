@@ -66,13 +66,13 @@
 
 // initialize the cache class
   require('includes/classes/cache.php');
-  $osC_Cache = new osC_CacheClass();
+  $osC_Cache = new osC_Cache();
 
 // include the database class
   require('includes/classes/database.php');
 
 // make a connection to the database... now
-  $osC_Database = new osC_DatabaseClass();
+  $osC_Database = new osC_Database();
   $osC_Database = $osC_Database->connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
   $osC_Database->selectDatabase(DB_DATABASE);
 

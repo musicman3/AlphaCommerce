@@ -75,7 +75,7 @@
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer, $osC_Specials;
 
       $osC_Variants = new osC_Variants();
-      $osC_DateTime = new osC_DateTimeClass();
+      $osC_DateTime = new osC_DateTime();
       if ( !$osC_Customer->isLoggedOn() ) {
         return false;
       }
@@ -304,7 +304,7 @@
     public function add($product_id, $quantity = null) {
       global $osC_Database, $osC_Services, $osC_Language, $osC_Customer;
 
-      $osC_DateTime = new osC_DateTimeClass();
+      $osC_DateTime = new osC_DateTime();
       $osC_Variants = new osC_Variants();
       if ( !is_numeric($product_id) ) {
         return false;

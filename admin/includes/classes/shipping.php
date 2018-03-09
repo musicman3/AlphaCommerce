@@ -65,7 +65,7 @@
         }
       }
 
-      osC_CacheClass::clear('languages');
+      osC_Cache::clear('languages');
     }
 
     function remove() {
@@ -93,7 +93,7 @@
           $Qdel->execute();
         }
 
-        osC_CacheClass::clear('languages');
+        osC_Cache::clear('languages');
       }
     }
   }

@@ -25,7 +25,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 <div class="moduleBox">
   <span style="float: right;"><h6><?php echo $osC_Language->get('order_total_heading') . ' ' . $order->info['total']; ?></h6></span>
   
-  <?php $osC_DateTime = new osC_DateTimeClass(); ?>
+  <?php $osC_DateTime = new osC_DateTime(); ?>
   <h6><?php echo  $osC_Language->get('order_date_heading') . ' ' . $osC_DateTime->getLong($order->info['date_purchased']) . ' <small>(' . $order->info['orders_status'] . ')</small>'; ?></h6>
 
   <div class="content">
@@ -38,7 +38,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 ?>
 
           <h6><?php echo $osC_Language->get('order_delivery_address_title'); ?></h6>
-          <?php $osC_Address = new osC_AddressClass(); ?>
+          <?php $osC_Address = new osC_Address(); ?>
           <p><?php echo $osC_Address->format($order->delivery, '<br />'); ?></p>
 
 <?php

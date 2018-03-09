@@ -145,7 +145,7 @@
           $counter++;
 
           $osC_Product = new osC_Product($v['id']);
-          $osC_Category = new osC_CategoryClass($osC_Product->getCategoryID());
+          $osC_Category = new osC_Category($osC_Product->getCategoryID());
 
           $history[] = array('name' => $osC_Product->getTitle(),
                              'id' => $osC_Product->getID(),
@@ -178,10 +178,10 @@
         foreach ($this->visits['categories'] as $k => $v) {
           $counter++;
 
-          $osC_Category = new osC_CategoryClass($v['id']);
+          $osC_Category = new osC_Category($v['id']);
 
           if ($osC_Category->hasParent()) {
-            $osC_CategoryParent = new osC_CategoryClass($osC_Category->getParent());
+            $osC_CategoryParent = new osC_Category($osC_Category->getParent());
           }
 
           $history[]  = array('id' => $osC_Category->getID(),

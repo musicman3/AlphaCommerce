@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_AddressBookClass class handles customer address book related functions
+ * The osC_AddressBook class handles customer address book related functions
  */
 
-  class osC_AddressBookClass {
+  class osC_AddressBook {
 
 /**
  * Returns the address book entries for the current customer
@@ -150,7 +150,7 @@
           $id = $osC_Database->nextID();
         }
 
-        if ( osC_AddressBookClass::setPrimaryAddress($id) ) {
+        if ( osC_AddressBook::setPrimaryAddress($id) ) {
           $osC_Customer->setCountryID($data['country']);
           $osC_Customer->setZoneID(($data['zone_id'] > 0) ? (int)$data['zone_id'] : '0');
           $osC_Customer->setDefaultAddressID($id);

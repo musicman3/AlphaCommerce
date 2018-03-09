@@ -116,7 +116,7 @@
         }
       }
 
-      $customer_address = osC_AddressBookClass::getEntry($osC_Customer->getDefaultAddressID())->toArray();
+      $customer_address = osC_AddressBook::getEntry($osC_Customer->getDefaultAddressID())->toArray();
 
       $Qorder = $osC_Database->query('insert into :table_orders (customers_id, customers_name, customers_company, customers_street_address, customers_suburb, customers_city, customers_postcode, customers_state, customers_state_code, customers_country, customers_country_iso2, customers_country_iso3, customers_telephone, customers_email_address, customers_address_format, customers_ip_address, delivery_name, delivery_company, delivery_street_address, delivery_suburb, delivery_city, delivery_postcode, delivery_state, delivery_state_code, delivery_country, delivery_country_iso2, delivery_country_iso3, delivery_address_format, billing_name, billing_company, billing_street_address, billing_suburb, billing_city, billing_postcode, billing_state, billing_state_code, billing_country, billing_country_iso2, billing_country_iso3, billing_address_format, payment_method, payment_module, date_purchased, orders_status, currency, currency_value) values (:customers_id, :customers_name, :customers_company, :customers_street_address, :customers_suburb, :customers_city, :customers_postcode, :customers_state, :customers_state_code, :customers_country, :customers_country_iso2, :customers_country_iso3, :customers_telephone, :customers_email_address, :customers_address_format, :customers_ip_address, :delivery_name, :delivery_company, :delivery_street_address, :delivery_suburb, :delivery_city, :delivery_postcode, :delivery_state, :delivery_state_code, :delivery_country, :delivery_country_iso2, :delivery_country_iso3, :delivery_address_format, :billing_name, :billing_company, :billing_street_address, :billing_suburb, :billing_city, :billing_postcode, :billing_state, :billing_state_code, :billing_country, :billing_country_iso2, :billing_country_iso3, :billing_address_format, :payment_method, :payment_module, now(), :orders_status, :currency, :currency_value)');
       $Qorder->bindTable(':table_orders', TABLE_ORDERS);
@@ -128,13 +128,13 @@
       $Qorder->bindValue(':customers_city', $customer_address['entry_city']);
       $Qorder->bindValue(':customers_postcode', $customer_address['entry_postcode']);
       $Qorder->bindValue(':customers_state', $customer_address['entry_state']);
-      $Qorder->bindValue(':customers_state_code', osC_AddressClass::getZoneCode($customer_address['entry_zone_id']));
-      $Qorder->bindValue(':customers_country', osC_AddressClass::getCountryName($customer_address['entry_country_id']));
-      $Qorder->bindValue(':customers_country_iso2', osC_AddressClass::getCountryIsoCode2($customer_address['entry_country_id']));
-      $Qorder->bindValue(':customers_country_iso3', osC_AddressClass::getCountryIsoCode3($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_state_code', osC_Address::getZoneCode($customer_address['entry_zone_id']));
+      $Qorder->bindValue(':customers_country', osC_Address::getCountryName($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_country_iso2', osC_Address::getCountryIsoCode2($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_country_iso3', osC_Address::getCountryIsoCode3($customer_address['entry_country_id']));
       $Qorder->bindValue(':customers_telephone', $customer_address['entry_telephone']);
       $Qorder->bindValue(':customers_email_address', $osC_Customer->getEmailAddress());
-      $Qorder->bindValue(':customers_address_format', osC_AddressClass::getFormat($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_address_format', osC_Address::getFormat($customer_address['entry_country_id']));
       $Qorder->bindValue(':customers_ip_address', osc_get_ip_address());
       $Qorder->bindValue(':delivery_name', $osC_ShoppingCart->getShippingAddress('firstname') . ' ' . $osC_ShoppingCart->getShippingAddress('lastname'));
       $Qorder->bindValue(':delivery_company', $osC_ShoppingCart->getShippingAddress('company'));
@@ -356,7 +356,7 @@
                        $osC_Language->get('email_order_separator') . "\n" .
                        sprintf($osC_Language->get('email_order_order_number'), $id) . "\n" .
                        sprintf($osC_Language->get('email_order_invoice_url'), osc_href_link(FILENAME_ACCOUNT, 'orders=' . $id, 'SSL', false, true, true)) . "\n" .
-                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTimeClass::getLong()) . "\n\n" .
+                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTime::getLong()) . "\n\n" .
                        $osC_Language->get('email_order_products') . "\n" .
                        $osC_Language->get('email_order_separator') . "\n";
 
@@ -411,7 +411,7 @@
 
           $email_order .= "\n" . $osC_Language->get('email_order_delivery_address') . "\n" .
                           $osC_Language->get('email_order_separator') . "\n" .
-                          osC_AddressClass::format($address) . "\n";
+                          osC_Address::format($address) . "\n";
 
           unset($address);
         }
@@ -431,7 +431,7 @@
 
         $email_order .= "\n" . $osC_Language->get('email_order_billing_address') . "\n" .
                         $osC_Language->get('email_order_separator') . "\n" .
-                        osC_AddressClass::format($address) . "\n\n";
+                        osC_Address::format($address) . "\n\n";
 
         unset($address);
 
@@ -452,7 +452,7 @@
         $Qstatuses->execute();
 
         while ($Qstatuses->next()) {
-				$dateformat = osC_DateTimeClass::getLong($Qstatuses->value('date_added'));
+				$dateformat = osC_DateTime::getLong($Qstatuses->value('date_added'));
           $email_order .= $dateformat . "\n\t" . wordwrap(str_replace("\n", "\n\t", $Qstatuses->value('comments')), 60, "\n\t", 1) . "\n\n";
         }			
         unset($Qstatuses);
@@ -484,7 +484,7 @@
                        $osC_Language->get('email_order_separator') . "<br />" .
                        sprintf($osC_Language->get('email_order_order_number'), $id) . "<br />" .
                        sprintf($osC_Language->get('email_order_invoice_url'), osc_href_link(FILENAME_ACCOUNT, 'orders=' . $id, 'SSL', false, true, true)) . "<br />" .
-                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTimeClass::getLong()) . "<br /><br />" .
+                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTime::getLong()) . "<br /><br />" .
                        $osC_Language->get('email_order_products') . "<br />" .
                        $osC_Language->get('email_order_separator') . "<br />";
 
@@ -539,7 +539,7 @@
 
           $email_order .= "<br />" . $osC_Language->get('email_order_delivery_address') . "<br />" .
                           $osC_Language->get('email_order_separator') . "<br />" .
-                          nl2br(osC_AddressClass::format($address)) . "<br />";
+                          nl2br(osC_Address::format($address)) . "<br />";
 
           unset($address);
         }
@@ -559,7 +559,7 @@
 
         $email_order .= "<br />" . $osC_Language->get('email_order_billing_address') . "<br />" .
                         $osC_Language->get('email_order_separator') . "<br />" .
-                        nl2br(osC_AddressClass::format($address)) . "<br /><br />";
+                        nl2br(osC_Address::format($address)) . "<br /><br />";
 
         unset($address);
 
@@ -580,7 +580,7 @@
         $Qstatuses->execute();
 
         while ($Qstatuses->next()) {
-				$dateformat = osC_DateTimeClass::getLong($Qstatuses->value('date_added'));
+				$dateformat = osC_DateTime::getLong($Qstatuses->value('date_added'));
           $email_order .= $dateformat . "<br /><br />" . nl2br($Qstatuses->value('comments')). "<br /><br />";
         }
         unset($Qstatuses);			

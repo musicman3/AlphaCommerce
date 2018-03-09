@@ -17,7 +17,7 @@
 
     $zones_array = array();
 
-    foreach (osC_AddressClass::getZones() as $zone) {
+    foreach (osC_Address::getZones() as $zone) {
       $zones_array[] = array('id' => $zone['id'],
                              'text' => $zone['name'],
                              'group' => $zone['country_name']);

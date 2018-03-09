@@ -62,7 +62,7 @@
     function getJavascriptBlock() {
       global $osC_Language, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCardClass();
+      $osC_CreditCard = new osC_CreditCard();
 
       $js = '  if (payment_value == "' . $this->_code . '") {' . "\n" .
             '    var payquake_cc_owner = document.checkout_payment.payquake_cc_owner.value;' . "\n" .
@@ -297,7 +297,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCardClass($_POST['payquake_cc_number'], $_POST['payquake_cc_expires_month'], $_POST['payquake_cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCard($_POST['payquake_cc_number'], $_POST['payquake_cc_expires_month'], $_POST['payquake_cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['payquake_cc_owner']);
 
       if (MODULE_PAYMENT_PAYQUAKE_CC_VERIFY_WITH_CVC == '1') {

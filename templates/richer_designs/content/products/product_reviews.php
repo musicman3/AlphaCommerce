@@ -55,7 +55,7 @@
     }
 ?>
 
-<p><?php echo osc_image('templates/' . $osC_Template->getCode() . '/images/stars_' . $Qreviews->valueInt('reviews_rating') . '.png', sprintf($osC_Language->get('rating_of_5_stars'), $Qreviews->valueInt('reviews_rating'))) . '&nbsp;' . sprintf($osC_Language->get('reviewed_by')); echo $Qreviews->valueProtected('customers_name') . '; ' . osC_DateTimeClass::getLong($Qreviews->value('date_added')); ?></p>
+<p><?php echo osc_image('templates/' . $osC_Template->getCode() . '/images/stars_' . $Qreviews->valueInt('reviews_rating') . '.png', sprintf($osC_Language->get('rating_of_5_stars'), $Qreviews->valueInt('reviews_rating'))) . '&nbsp;' . sprintf($osC_Language->get('reviewed_by')); echo $Qreviews->valueProtected('customers_name') . '; ' . osC_DateTime::getLong($Qreviews->value('date_added')); ?></p>
 
 <?php echo nl2br(wordwrap($Qreviews->valueProtected('reviews_text'), 10000)); ?>
 

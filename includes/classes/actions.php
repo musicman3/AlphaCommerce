@@ -16,7 +16,7 @@
  * The osC_Actions class loads action modules to execute specific tasks
  */
 
-  class osC_ActionsClass {
+  class osC_Actions {
 
 /**
  * Loads the action module to execute

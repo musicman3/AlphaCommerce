@@ -56,8 +56,8 @@
       }
 
       if ($osC_MessageStack->size('account_password') === 0) {
-        if (osC_AccountClass::checkPassword(trim($_POST['password_current']))) {
-          if (osC_AccountClass::savePassword(trim($_POST['password_new']))) {
+        if (osC_Account::checkPassword(trim($_POST['password_current']))) {
+          if (osC_Account::savePassword(trim($_POST['password_new']))) {
             $osC_MessageStack->add('account', $osC_Language->get('success_password_updated'), 'success');
 
             osc_redirect(osc_href_link(FILENAME_ACCOUNT, null, 'SSL'));

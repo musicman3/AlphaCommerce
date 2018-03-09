@@ -618,9 +618,9 @@ break;
 			if ( $error === false ) {
 				$osC_Database->commitTransaction();
 
-				osC_CacheClass::clear('categories');
-				osC_CacheClass::clear('category_tree');
-				osC_CacheClass::clear('also_purchased');
+				osC_Cache::clear('categories');
+				osC_Cache::clear('category_tree');
+				osC_Cache::clear('also_purchased');
 
 				return true;
 			}
@@ -722,9 +722,9 @@ break;
 					if ( $error === false ) {
 						$osC_Database->commitTransaction();
 
-						osC_CacheClass::clear('categories');
-						osC_CacheClass::clear('category_tree');
-						osC_CacheClass::clear('also_purchased');
+						osC_Cache::clear('categories');
+						osC_Cache::clear('category_tree');
+						osC_Cache::clear('also_purchased');
 
 						return true;
 					} else {
@@ -927,10 +927,10 @@ break;
 			if ( $error === false ) {
 				$osC_Database->commitTransaction();
 
-				osC_CacheClass::clear('categories');
-				osC_CacheClass::clear('category_tree');
-				osC_CacheClass::clear('also_purchased');
-				osC_CacheClass::clear('box-whats_new');
+				osC_Cache::clear('categories');
+				osC_Cache::clear('category_tree');
+				osC_Cache::clear('also_purchased');
+				osC_Cache::clear('box-whats_new');
 
 				return true;
 			}

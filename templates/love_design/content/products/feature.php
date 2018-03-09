@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  $Qfeature = osC_FeatureClass::getListing();
+  $Qfeature = osC_Feature::getListing();
 ?>
 
 <?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {

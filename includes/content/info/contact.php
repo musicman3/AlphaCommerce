@@ -88,7 +88,7 @@
     }
     
     function _generateImage() {
-      $captcha = new osC_CaptchaClass();
+      $captcha = new osC_Captcha();
       $_SESSION['verify_code'] = $captcha->getCode(); 
       
       $captcha->genCaptcha();

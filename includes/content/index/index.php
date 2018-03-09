@@ -49,7 +49,7 @@
           }
         }
 
-        $osC_Category = new osC_CategoryClass($current_category_id);
+        $osC_Category = new osC_Category($current_category_id);
 
         $this->_page_title = $osC_Category->getTitle();
 

@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_AccountClass class manages customer accounts
+ * The osC_Account class manages customer accounts
  */
 
-  class osC_AccountClass {
+  class osC_Account {
 
 /**
  * Returns the account information for the current customer

@@ -20,7 +20,7 @@
       global $osC_Services, $osC_Language, $osC_Breadcrumb, $osC_Info;
       
    //initialize the page_title
-	  $osC_Info = new osC_InfoClass();
+	  $osC_Info = new osC_Info();
       $QinfoDetails = $osC_Info->getDetails();
       $this->_page_title = $QinfoDetails->value("info_name");
 

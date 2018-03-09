@@ -79,7 +79,7 @@
 
       if (isset($_POST['email_address']) && (strlen(trim($_POST['email_address'])) >= ACCOUNT_EMAIL_ADDRESS)) {
         if (osc_validate_email_address($_POST['email_address'])) {
-          if (osC_AccountClass::checkDuplicateEntry($_POST['email_address']) === false) {
+          if (osC_Account::checkDuplicateEntry($_POST['email_address']) === false) {
             $data['email_address'] = $_POST['email_address'];
           } else {
             $osC_MessageStack->add('account_edit', $osC_Language->get('field_customer_email_address_exists_error'));
@@ -92,7 +92,7 @@
       }
 
       if ($osC_MessageStack->size('account_edit') === 0) {
-        if (osC_AccountClass::saveEntry($data)) {
+        if (osC_Account::saveEntry($data)) {
 // reset the session variables
           if (ACCOUNT_GENDER > -1) {
             $osC_Customer->setGender($data['gender']);

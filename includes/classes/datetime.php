@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_DateTimeClass {
+  class osC_DateTime {
     function getNow() {
       return date('Y-m-d H:i:s');      
     }
@@ -21,7 +21,7 @@
       global $osC_Language;
 
       if (empty($date)) {
-        $date = osC_DateTimeClass::getNow();
+        $date = osC_DateTime::getNow();
       }
 
       $year = substr($date, 0, 4);
@@ -42,7 +42,7 @@
       global $osC_Language;
 
       if (empty($date)) {
-        $date = osC_DateTimeClass::getNow();
+        $date = osC_DateTime::getNow();
       }
 
       $year = substr($date, 0, 4);
@@ -63,7 +63,7 @@
       global $osC_Language;
 
       if (empty($date)) {
-        $date = osC_DateTimeClass::getNow();
+        $date = osC_DateTime::getNow();
       }
 
       $year = substr($date, 0, 4);

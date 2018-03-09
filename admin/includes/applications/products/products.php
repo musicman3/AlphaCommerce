@@ -40,7 +40,7 @@
       }
 
       require('../includes/classes/currencies.php');
-      $osC_Currencies = new osC_CurrenciesClass();
+      $osC_Currencies = new osC_Currencies();
 
       require('includes/classes/tax.php');
       $osC_Tax = new osC_Tax_Admin();

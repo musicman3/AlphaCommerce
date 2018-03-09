@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_BannerClass class manages the banners shown throughout the online store
+ * The osC_Banner class manages the banners shown throughout the online store
  */
 
-  class osC_BannerClass {
+  class osC_Banner {
 
 /**
  * Controls whether banners should be shown multiple times on the page
@@ -83,7 +83,7 @@
       $Qbanner->execute();
 
       while ( $Qbanner->next() ) {
-        if ( osC_DateTimeClass::getNow() >= $Qbanner->value('date_scheduled') ) {
+        if ( osC_DateTime::getNow() >= $Qbanner->value('date_scheduled') ) {
           $this->activate($Qbanner->valueInt('banners_id'));
         }
       }
@@ -117,7 +117,7 @@
 
       while ( $Qbanner->next() ) {
         if ( !osc_empty($Qbanner->value('expires_date')) ) {
-          if ( osC_DateTimeClass::getNow() >= $Qbanner->value('expires_date') ) {
+          if ( osC_DateTime::getNow() >= $Qbanner->value('expires_date') ) {
             $this->expire($Qbanner->valueInt('banners_id'));
           }
         } elseif ( !osc_empty($Qbanner->valueInt('expires_impressions')) ) {

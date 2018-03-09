@@ -95,7 +95,7 @@
 
       if (isset($_POST['email_address']) && (strlen(trim($_POST['email_address'])) >= ACCOUNT_EMAIL_ADDRESS)) {
         if (osc_validate_email_address($_POST['email_address'])) {
-          if (osC_AccountClass::checkDuplicateEntry($_POST['email_address']) === false) {
+          if (osC_Account::checkDuplicateEntry($_POST['email_address']) === false) {
             $data['email_address'] = $_POST['email_address'];
           } else {
             $osC_MessageStack->add($this->_module, $osC_Language->get('field_customer_email_address_exists_error'));
@@ -116,7 +116,7 @@
       }
 
       if ($osC_MessageStack->size($this->_module) === 0) {
-        if (osC_AccountClass::createEntry($data)) {
+        if (osC_Account::createEntry($data)) {
           $osC_MessageStack->add('create', $osC_Language->get('success_account_updated'), 'success');
         }
 

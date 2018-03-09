@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  $Qaccount = osC_AccountClass::getEntry();
+  $Qaccount = osC_Account::getEntry();
 ?>
 
 <?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {

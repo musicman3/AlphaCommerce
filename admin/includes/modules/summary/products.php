@@ -45,7 +45,7 @@
           include('../includes/classes/currencies.php');
         }
 
-        $osC_Currencies = new osC_CurrenciesClass();
+        $osC_Currencies = new osC_Currencies();
       }
 
       $this->_data = '<table border="0" width="100%" cellspacing="0" cellpadding="2" class="dataTable">' .

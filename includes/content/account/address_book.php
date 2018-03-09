@@ -50,7 +50,7 @@
 
         $this->addJavascriptPhpFilename('includes/form_check.js.php');
       } elseif (isset($_GET['edit']) && is_numeric($_GET[$this->_module])) {
-        if (!osC_AddressBookClass::checkEntry($_GET['address_book'])) {
+        if (!osC_AddressBook::checkEntry($_GET['address_book'])) {
           $osC_MessageStack->add('address_book', $osC_Language->get('error_address_book_entry_non_existing'), 'error');
         }
 
@@ -68,7 +68,7 @@
         if ($_GET['address_book'] == $osC_Customer->getDefaultAddressID()) {
           $osC_MessageStack->add('address_book', $osC_Language->get('warning_primary_address_deletion'), 'warning');
         } else {
-          if (!osC_AddressBookClass::checkEntry($_GET['address_book'])) {
+          if (!osC_AddressBook::checkEntry($_GET['address_book'])) {
             $osC_MessageStack->add('address_book', $osC_Language->get('error_address_book_entry_non_existing'), 'error');
           }
         }
@@ -84,7 +84,7 @@
       }
 
       if (isset($_GET['new']) && ($_GET['new'] == 'save')) {
-        if (osC_AddressBookClass::numberOfEntries() >= MAX_ADDRESS_BOOK_ENTRIES) {
+        if (osC_AddressBook::numberOfEntries() >= MAX_ADDRESS_BOOK_ENTRIES) {
           $osC_MessageStack->add('address_book', $osC_Language->get('error_address_book_full'));
 
           $this->_page_title = $osC_Language->get('address_book_heading');
@@ -234,7 +234,7 @@
       }
 
       if ($osC_MessageStack->size('address_book') === 0) {
-        if (osC_AddressBookClass::saveEntry($data, $id)) {
+        if (osC_AddressBook::saveEntry($data, $id)) {
           $osC_MessageStack->add('address_book', $osC_Language->get('success_address_book_entry_updated'), 'success');
         }
 
@@ -246,7 +246,7 @@
       global $osC_MessageStack, $osC_Language, $osC_Customer;
 
       if ($id != $osC_Customer->getDefaultAddressID()) {
-        if (osC_AddressBookClass::deleteEntry($id)) {
+        if (osC_AddressBook::deleteEntry($id)) {
           $osC_MessageStack->add('address_book', $osC_Language->get('success_address_book_entry_deleted'), 'success');
         }
       } else {

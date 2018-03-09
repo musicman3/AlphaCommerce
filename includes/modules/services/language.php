@@ -17,7 +17,7 @@
       global $osC_Language, $osC_Session;
 
       require('includes/classes/language.php');
-      $osC_Language = new osC_LanguageClass();
+      $osC_Language = new osC_Language();
 
       if (isset($_GET['language']) && !empty($_GET['language'])) {
         $osC_Language->set($_GET['language']);

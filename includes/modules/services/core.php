@@ -27,7 +27,7 @@
       include('includes/classes/address.php');
 
       include('includes/classes/customer.php');
-      $osC_Customer = new osC_CustomerClass();
+      $osC_Customer = new osC_Customer();
 
       include('includes/classes/tax.php');
       $osC_Tax = new osC_Tax();
@@ -43,7 +43,7 @@
       $osC_NavigationHistory = new osC_NavigationHistory(true);
 
       include('includes/classes/image.php');
-      $osC_Image = new osC_ImageClass();
+      $osC_Image = new osC_Image();
 
       return true;
     }

@@ -17,7 +17,7 @@
   $countries_array = array(array('id' => '',
                                  'text' => $osC_Language->get('all_countries')));
 
-  foreach ( osC_AddressClass::getCountries() as $country ) {
+  foreach ( osC_Address::getCountries() as $country ) {
     $countries_array[] = array('id' => $country['id'],
                                'text' => $country['name']);
   }
@@ -26,7 +26,7 @@
                              'text' => $osC_Language->get('all_zones')));
 
   if ( $osC_ObjectInfo->get('zone_country_id') > 0 ) {
-    foreach ( osC_AddressClass::getZones($osC_ObjectInfo->get('zone_country_id')) as $zone ) {
+    foreach ( osC_Address::getZones($osC_ObjectInfo->get('zone_country_id')) as $zone ) {
       $zones_array[] = array('id' => $zone['id'],
                              'text' => $zone['name']);
     }

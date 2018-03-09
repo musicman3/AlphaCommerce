@@ -41,7 +41,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 ?>
 
     </td>
-    <td valign="top"><?php echo osc_link_object(osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword()), '<b><span style="text-decoration: underline;">' . $osC_Product->getTitle() . '</span></b>') . '<br />' . $osC_Language->get('date_added') . ' ' . osC_DateTimeClass::getLong($osC_Product->getDateAdded()) . '<br />' . $osC_Language->get('manufacturer') . ' ' . $osC_Product->getManufacturer() . '<br /><br />' . $osC_Language->get('price') . ' ' . $osC_Product->getPriceFormated(true); ?></td>
+    <td valign="top"><?php echo osc_link_object(osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword()), '<b><span style="text-decoration: underline;">' . $osC_Product->getTitle() . '</span></b>') . '<br />' . $osC_Language->get('date_added') . ' ' . osC_DateTime::getLong($osC_Product->getDateAdded()) . '<br />' . $osC_Language->get('manufacturer') . ' ' . $osC_Product->getManufacturer() . '<br /><br />' . $osC_Language->get('price') . ' ' . $osC_Product->getPriceFormated(true); ?></td>
     <td class="submitFormButtons" align="right" valign="middle"><?php if ( $osC_Product->hasVariants() ) {echo $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword() . '&action=cart_add'), 'icon' => 'cart', 'title' => $osC_Language->get('button_add_to_cart')));} else {echo $osC_Template->osc_draw_image_jquery_button_buy(array('buy' => $osC_Product->getKeyword(), 'icon' => 'cart', 'title' => $osC_Language->get('button_add_to_cart')));} ?></td>
   </tr>
   <tr>

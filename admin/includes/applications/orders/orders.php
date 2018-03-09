@@ -39,7 +39,7 @@
       }
 
       include('../includes/classes/currencies.php');
-      $osC_Currencies = new osC_CurrenciesClass();
+      $osC_Currencies = new osC_Currencies();
 
       $orders_statuses = array();
       $orders_status_array = array();
@@ -214,7 +214,7 @@
       $Qupdate->setLogging($_SESSION['module'], $id);
       $Qupdate->execute();
 	  
-	  $osC_DateTime = new osC_DateTimeClass();
+	  $osC_DateTime = new osC_DateTime();
       if ( !$osC_Database->isError() ) {
 
 				//START TEXT-PLAIN E-MAIL

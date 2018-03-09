@@ -107,7 +107,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -130,8 +130,8 @@
 
         $module->install();
 
-        osC_CacheClass::clear('modules-shipping');
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('modules-shipping');
+        osC_Cache::clear('configuration');
 
         return true;
       }
@@ -152,8 +152,8 @@
 
         $module->remove();
 
-        osC_CacheClass::clear('modules-shipping');
-        osC_CacheClass::clear('configuration');
+        osC_Cache::clear('modules-shipping');
+        osC_Cache::clear('configuration');
 
         return true;
       }
