@@ -39,7 +39,7 @@
       }
 
       include('../includes/classes/currencies.php');
-      $osC_Currencies = new osC_Currencies();
+      $osC_Currencies = new osC_CurrenciesClass();
 
       $orders_statuses = array();
       $orders_status_array = array();

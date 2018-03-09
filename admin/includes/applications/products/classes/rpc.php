@@ -33,7 +33,7 @@ as published by the Free Software Foundation.
 				$_GET['page'] = 1;
 			}
 
-			$osC_Currencies = new osC_Currencies();
+			$osC_Currencies = new osC_CurrenciesClass();
 
 			if ( !empty($_GET['search']) ) {
 				$result = osC_Products_Admin::find($_GET['search'], $_GET['cID'], $_GET['page']);

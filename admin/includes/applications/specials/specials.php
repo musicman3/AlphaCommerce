@@ -41,7 +41,7 @@
 
       $osC_Tax = new osC_Tax_Admin();
 
-      $osC_Currencies = new osC_Currencies();
+      $osC_Currencies = new osC_CurrenciesClass();
 
       if ( !empty($_GET['action']) ) {
         switch ( $_GET['action'] ) {

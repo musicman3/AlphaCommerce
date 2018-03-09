@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  $osC_Currencies = new osC_Currencies();
+  $osC_Currencies = new osC_CurrenciesClass();
 
   $osC_Tax = new osC_Tax_Admin();
 

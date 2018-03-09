@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Currencies {
+  class osC_CurrenciesClass {
     var $currencies = array();
 
 // class constructor
