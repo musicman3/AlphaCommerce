@@ -14,7 +14,7 @@
 ?>
 
 <?php if (file_exists('images/' . $osC_Template->getPageImage()) == true) {
-echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->getPageTitle(), HEADING_IMAGE_WIDTH, HEADING_IMAGE_HEIGHT, 'id="pageIcon"');
+echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
 } else {}
 ?>
 

@@ -13,11 +13,11 @@
 */
 ?>
 <?php if (file_exists('images/' . $osC_Template->getPageImage()) == true) {
-echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->getPageTitle(), '100%', '100%', 'id="pageIcon"');
+echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
 } else {}
 ?>
 
-<p><h1><?php echo $osC_Template->getPageTitle(); ?></h1></p>
+<h1><?php echo $osC_Template->getPageTitle(); ?></h1>
 
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
 			<tr>
