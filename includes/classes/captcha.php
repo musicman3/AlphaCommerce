@@ -9,7 +9,7 @@
   as published by the Free Software Foundation.
 */
 
-	class osC_Captcha {
+	class osC_CaptchaClass {
 		protected $_code;
 		protected $_width  = 30;
 		protected $_height = 150;
