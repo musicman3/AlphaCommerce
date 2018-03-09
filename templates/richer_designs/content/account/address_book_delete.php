@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  $Qentry = osC_AddressBook::getEntry($_GET['address_book']);
+  $Qentry = osC_AddressBookClass::getEntry($_GET['address_book']);
 ?>
 
 <?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {

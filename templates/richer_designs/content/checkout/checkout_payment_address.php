@@ -54,7 +54,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 <?php
     }
 
-    if (osC_AddressBook::numberOfEntries() > 1) {
+    if (osC_AddressBookClass::numberOfEntries() > 1) {
 ?>
 
 <div class="moduleBox">
@@ -125,7 +125,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
     }
   }
 
-  if (osC_AddressBook::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES) {
+  if (osC_AddressBookClass::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES) {
 ?>
 
 <div class="moduleBox">

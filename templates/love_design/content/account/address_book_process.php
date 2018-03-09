@@ -13,9 +13,9 @@
 */
 
   if (isset($_GET['edit'])) {
-    $Qentry = osC_AddressBook::getEntry($_GET['address_book']);
+    $Qentry = osC_AddressBookClass::getEntry($_GET['address_book']);
   } else {
-    if (osC_AddressBook::numberOfEntries() >= MAX_ADDRESS_BOOK_ENTRIES) {
+    if (osC_AddressBookClass::numberOfEntries() >= MAX_ADDRESS_BOOK_ENTRIES) {
       $osC_MessageStack->add('address_book', $osC_Language->get('error_address_book_full'));
     }
   }
@@ -33,7 +33,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
     echo $osC_MessageStack->get('address_book');
   }
 
-  if ( ($osC_Customer->hasDefaultAddress() === false) || (isset($_GET['new']) && (osC_AddressBook::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES)) || (isset($Qentry) && ($Qentry->numberOfRows() === 1)) ) {
+  if ( ($osC_Customer->hasDefaultAddress() === false) || (isset($_GET['new']) && (osC_AddressBookClass::numberOfEntries() < MAX_ADDRESS_BOOK_ENTRIES)) || (isset($Qentry) && ($Qentry->numberOfRows() === 1)) ) {
 ?>
 
 <form name="address_book" action="<?php echo osc_href_link(FILENAME_ACCOUNT, 'address_book=' . $_GET['address_book'] . '&' . (isset($_GET['edit']) ? 'edit' : 'new') . '=save', 'SSL'); ?>" method="post" onsubmit="return check_form(address_book);">

@@ -51,7 +51,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
 
 <?php
-  $Qaddresses = osC_AddressBook::getListing();
+  $Qaddresses = osC_AddressBookClass::getListing();
 
   while ($Qaddresses->next()) {
 ?>
