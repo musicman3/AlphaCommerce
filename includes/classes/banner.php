@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_Banner class manages the banners shown throughout the online store
+ * The osC_BannerClass class manages the banners shown throughout the online store
  */
 
-  class osC_Banner {
+  class osC_BannerClass {
 
 /**
  * Controls whether banners should be shown multiple times on the page

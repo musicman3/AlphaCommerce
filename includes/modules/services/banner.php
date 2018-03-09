@@ -17,7 +17,7 @@
       global $osC_Banner;
 
       include('includes/classes/banner.php');
-      $osC_Banner = new osC_Banner();
+      $osC_Banner = new osC_BannerClass();
 
       $osC_Banner->activateAll();
       $osC_Banner->expireAll();
