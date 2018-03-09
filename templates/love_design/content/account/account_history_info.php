@@ -24,8 +24,9 @@ echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->get
 
 <div class="moduleBox">
   <span style="float: right;"><h6><?php echo $osC_Language->get('order_total_heading') . ' ' . $order->info['total']; ?></h6></span>
-
-  <h6><?php echo  $osC_Language->get('order_date_heading') . ' ' . osC_DateTime::getLong($order->info['date_purchased']) . ' <small>(' . $order->info['orders_status'] . ')</small>'; ?></h6>
+  
+  <?php $osC_DateTime = new osC_DateTime(); ?>
+  <h6><?php echo  $osC_Language->get('order_date_heading') . ' ' . $osC_DateTime->getLong($order->info['date_purchased']) . ' <small>(' . $order->info['orders_status'] . ')</small>'; ?></h6>
 
   <div class="content">
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -37,8 +38,8 @@ echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->get
 ?>
 
           <h6><?php echo $osC_Language->get('order_delivery_address_title'); ?></h6>
-
-          <p><?php echo osC_Address::format($order->delivery, '<br />'); ?></p>
+          <?php $osC_Address = new osC_Address(); ?>
+          <p><?php echo $osC_Address->format($order->delivery, '<br />'); ?></p>
 
 <?php
     if (!empty($order->info['shipping_method'])) {
@@ -55,7 +56,7 @@ echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->get
 
           <h6><?php echo $osC_Language->get('order_billing_address_title'); ?></h6>
 
-          <p><?php echo osC_Address::format($order->billing, '<br />'); ?></p>
+          <p><?php echo $osC_Address->format($order->billing, '<br />'); ?></p>
 
           <h6><?php echo $osC_Language->get('order_payment_method_title'); ?></h6>
 
@@ -98,9 +99,9 @@ echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->get
     }
 
     echo '</td>' . "\n";
-
+    $osC_Tax = new osC_Tax();
     if (sizeof($order->info['tax_groups']) > 1) {
-      echo '                <td valign="top" align="right">' . osC_Tax::displayTaxRateValue($product['tax']) . '</td>' . "\n";
+      echo '                <td valign="top" align="right">' . $osC_Tax->displayTaxRateValue($product['tax']) . '</td>' . "\n";
     }
 
     echo '                <td align="right" valign="top">' . $osC_Currencies->displayPriceWithTaxRate($product['price'], $product['tax'], $product['qty'], false, $order->info['currency'], $order->info['currency_value']) . '</td>' . "\n" .
@@ -146,7 +147,7 @@ echo osc_image(DIR_WS_IMAGES . $osC_Template->getPageImage(), $osC_Template->get
 <?php
     while ($Qstatus->next()) {
       echo '    <tr>' . "\n" .
-           '      <td valign="top" width="70">' . osC_DateTime::getShort($Qstatus->value('date_added')) . '</td>' . "\n" .
+           '      <td valign="top" width="70">' . $osC_DateTime->getShort($Qstatus->value('date_added')) . '</td>' . "\n" .
            '      <td valign="top" width="70">' . $Qstatus->value('orders_status_name') . '</td>' . "\n" .
            '      <td valign="top">' . (!osc_empty($Qstatus->valueProtected('comments')) ? nl2br($Qstatus->valueProtected('comments')) : '&nbsp;') . '</td>' . "\n" .
            '    </tr>' . "\n";

@@ -34,9 +34,7 @@
 
       if (!empty($order_id)) {
         $this->query($order_id);
-      } else {
-        $this->cart();
-      }
+      } 
     }
 
 /* Public methods */

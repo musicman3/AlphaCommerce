@@ -11,7 +11,8 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
-
+  $osC_Reviews_Admin = new osC_Reviews_Admin();
+  $osC_DateTime = new osC_DateTime();
   $osC_ObjectInfo = new osC_ObjectInfo(osC_Reviews_Admin::getData($_GET['rID']));
 ?>
 
@@ -25,7 +26,7 @@
 
 <p align="right"><?php echo '<input type="button" value="' . $osC_Language->get('button_back') . '" class="operationButton" onclick="document.location.href=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&page=' . $_GET['page']) . '\';">'; ?></p>
 
-<p><?php echo '<b>' . $osC_Language->get('field_product') . '</b> ' . $osC_ObjectInfo->get('products_name') . '<br /><b>' . $osC_Language->get('field_author') . '</b> ' . osc_output_string_protected($osC_ObjectInfo->get('customers_name')) . '<br /><br /><b>' . $osC_Language->get('field_date_added') . '</b> ' . osC_DateTime::getShort($osC_ObjectInfo->get('date_added')); ?></p>
+<p><?php echo '<b>' . $osC_Language->get('field_product') . '</b> ' . $osC_ObjectInfo->get('products_name') . '<br /><b>' . $osC_Language->get('field_author') . '</b> ' . osc_output_string_protected($osC_ObjectInfo->get('customers_name')) . '<br /><br /><b>' . $osC_Language->get('field_date_added') . '</b> ' . $osC_DateTime->getShort($osC_ObjectInfo->get('date_added')); ?></p>
 
 <p><?php echo '<b>' . $osC_Language->get('field_review') . '</b><br />' . nl2br(osc_output_string_protected($osC_ObjectInfo->get('reviews_text'))); ?></p>
 

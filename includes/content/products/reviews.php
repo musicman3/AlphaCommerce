@@ -36,10 +36,11 @@
       if ($osC_Services->isStarted('breadcrumb')) {
         $osC_Breadcrumb->add($osC_Language->get('breadcrumb_reviews'), osc_href_link(FILENAME_PRODUCTS, $this->_module));
       }
-
+      
+      $osC_Reviews = new osC_Reviews();
       if (is_numeric($_GET[$this->_module])) {
-        if (osC_Reviews::exists($_GET[$this->_module])) {
-          $osC_Product = new osC_Product(osC_Reviews::getProductID($_GET[$this->_module]));
+        if ($osC_Reviews->exists($_GET[$this->_module])) {
+          $osC_Product = new osC_Product($osC_Reviews->getProductID($_GET[$this->_module]));
 
           $this->_page_title = $osC_Product->getTitle();
           $this->_page_contents = 'reviews_info.php';
@@ -98,7 +99,7 @@
         }
 
         if ($counter < 2) {
-          if (osC_Reviews::exists() === false) {
+          if ($osC_Reviews->exists() === false) {
             $this->_page_contents = 'reviews_not_found.php';
           }
         }
@@ -146,8 +147,9 @@
 
           $osC_MessageStack->add('reviews', $osC_Language->get('success_review_new'), 'success');
         }
-
-        osC_Reviews::saveEntry($data);
+        
+        $osC_Reviews = new osC_Reviews();
+        $osC_Reviews->saveEntry($data);
 
         osc_redirect(osc_href_link(FILENAME_PRODUCTS, 'reviews&' . $id));
       }

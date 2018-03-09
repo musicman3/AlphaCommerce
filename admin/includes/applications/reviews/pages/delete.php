@@ -11,8 +11,8 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
-
-  $osC_ObjectInfo = new osC_ObjectInfo(osC_Reviews_Admin::getData($_GET['rID']));
+  $osC_Reviews_Admin = new osC_Reviews_Admin();
+  $osC_ObjectInfo = new osC_ObjectInfo($osC_Reviews_Admin->getData($_GET['rID']));
 ?>
 
 <h1><?php echo osc_link_object(osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule()), $osC_Template->getPageTitle()); ?></h1>
