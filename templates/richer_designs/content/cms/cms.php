@@ -17,7 +17,8 @@ http://oscommerce-extra.hu
 	// define the max number of articles to display
 	$max_articles = MAX_DISPLAY_CMS_ARTICLES;
 	// grab a list of cms items
-	$QcmsList = osC_Cms::getListing();
+	$osC_Cms = new osC_Cms();
+	$QcmsList = $osC_Cms->getListing();
 
 ?>
 
@@ -37,7 +38,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
 <?php
 	if (isset($_GET['cmskeyword'])) {;
-		$QcmsList = osC_Cms::getsearchDetail($_GET['cmskeyword']);
+		$QcmsList = $osC_Cms->getsearchDetail($_GET['cmskeyword']);
 	}
 ?>
 
