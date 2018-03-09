@@ -11,7 +11,7 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
-  $QinfoList = osC_Info::getListing();
+  $QinfoList = osC_InfoClass::getListing();
 ?>
 
 <?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {

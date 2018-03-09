@@ -11,7 +11,7 @@
   it under the terms of the GNU General Public License v2 (1991)
   as published by the Free Software Foundation.
 */
-  $osC_Info = new osC_Info();
+  $osC_Info = new osC_InfoClass();
   $QinfoList = $osC_Info->getListing();
   $osC_CategoryTree->reset();
   $osC_CategoryTree->setShowCategoryProductCount(false);
