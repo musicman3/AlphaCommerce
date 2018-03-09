@@ -1125,7 +1125,7 @@
     }
   }
 
-  $assignedCategoryTree = new osC_CategoryTree();
+  $assignedCategoryTree = new osC_CategoryTreeClass();
   $assignedCategoryTree->setBreadcrumbUsage(false);
   $assignedCategoryTree->setSpacerString('&nbsp;', 5);
 

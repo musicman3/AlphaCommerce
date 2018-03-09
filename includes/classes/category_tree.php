@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_CategoryTree {
+  class osC_CategoryTreeClass {
 
 /**
  * Flag to control if the total number of products in a category should be calculated
