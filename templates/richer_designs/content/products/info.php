@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 ?>
-<?php if (file_exists(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage()) == true)) {
+<?php if (file_exists(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage()) == true) {
 echo osc_image(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
 } else {}
 ?>
