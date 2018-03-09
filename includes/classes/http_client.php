@@ -15,7 +15,7 @@
 
   Minimal Example:
 
-  $http = new httpClient();
+  $http = new httpClientClass();
   $http->Connect("somehost", 80) or die("Connect problem");
   $status = $http->Get("/index.html");
   if ($status != 200) {
@@ -27,7 +27,7 @@
 
   Persistent Example:
 
-  $http = new httpClient("dir.yahoo.com", 80);
+  $http = new httpClientClass("dir.yahoo.com", 80);
   $http->addHeader("Host", "dir.yahoo.com");
   $http->addHeader("Connection", "keep-alive");
 
@@ -36,7 +36,7 @@
   $http->disconnect();
 */
 
-  class httpClient {
+  class httpClientClass {
     var $url; // array containg server URL, similar to parseurl() returned array
     var $reply; // response code
     var $replyString; // full response

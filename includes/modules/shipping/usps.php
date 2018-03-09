@@ -211,7 +211,7 @@
 
       $body = '';
 
-      $http = new httpClient();
+      $http = new httpClientClass();
       if ($http->Connect($usps_server, 80)) {
         $http->addHeader('Host', $usps_server);
         $http->addHeader('User-Agent', 'osCommerce');
