@@ -56,6 +56,7 @@ access_configuration_title35 = Ссылки страниц
 access_configuration_title36 = Категории в строке
 access_configuration_title37 = Листинг новых товаров
 access_configuration_title38 = История заказов
+access_configuration_title39a = Высота изображения иконок в пикселях
 access_configuration_title39 = Ширина основного изображения категорий в пикселях
 access_configuration_title40 = Высота основного изображения категорий в пикселях
 access_configuration_title41 = Необходимое изображение

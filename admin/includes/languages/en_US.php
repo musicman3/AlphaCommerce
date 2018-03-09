@@ -56,6 +56,7 @@ access_configuration_title35 = Page Links
 access_configuration_title36 = Categories To List Per Row
 access_configuration_title37 = New Products Listing
 access_configuration_title38 = Order History
+access_configuration_title39a = The pixel height of heading icon images
 access_configuration_title39 = The pixel width of heading category images
 access_configuration_title40 = The pixel height of heading category images
 access_configuration_title41 = Image Required
