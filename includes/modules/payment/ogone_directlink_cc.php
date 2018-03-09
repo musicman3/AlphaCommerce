@@ -71,7 +71,7 @@
     function getJavascriptBlock() {
       global $osC_Language, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard();
+      $osC_CreditCard = new osC_CreditCardClass();
 
       $js = '  if (payment_value == "' . $this->_code . '") {' . "\n" .
             '    var ogone_directlink_cc_owner = document.checkout_payment.ogone_directlink_cc_owner.value;' . "\n" .
@@ -272,7 +272,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard($_POST['ogone_directlink_cc_number'], $_POST['ogone_directlink_cc_expires_month'], $_POST['ogone_directlink_cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCardClass($_POST['ogone_directlink_cc_number'], $_POST['ogone_directlink_cc_expires_month'], $_POST['ogone_directlink_cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['ogone_directlink_cc_owner']);
 
       if (MODULE_PAYMENT_OGONE_DIRECTLINK_CC_VERIFY_WITH_CVC == '1') {

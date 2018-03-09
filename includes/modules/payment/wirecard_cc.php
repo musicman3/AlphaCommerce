@@ -72,7 +72,7 @@
     function getJavascriptBlock() {
       global $osC_Language, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard();
+      $osC_CreditCard = new osC_CreditCardClass();
 
       $js = '  if (payment_value == "' . $this->_code . '") {' . "\n" .
             '    var wirecard_cc_owner = document.checkout_payment.wirecard_cc_owner.value;' . "\n" .
@@ -316,7 +316,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard($_POST['wirecard_cc_number'], $_POST['wirecard_cc_expires_month'], $_POST['wirecard_cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCardClass($_POST['wirecard_cc_number'], $_POST['wirecard_cc_expires_month'], $_POST['wirecard_cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['wirecard_cc_owner']);
 
       if (MODULE_PAYMENT_WIRECARD_CC_VERIFY_WITH_CVC == '1') {

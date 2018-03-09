@@ -317,7 +317,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard($_POST['psigate_cc_number'], $_POST['psigate_cc_expires_month'], $_POST['psigate_cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCardClass($_POST['psigate_cc_number'], $_POST['psigate_cc_expires_month'], $_POST['psigate_cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['psigate_cc_owner']);
 
       if ($result = $osC_CreditCard->isValid() !== true) {

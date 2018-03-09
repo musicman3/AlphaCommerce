@@ -74,7 +74,7 @@
     function getJavascriptBlock() {
       global $osC_Language, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard();
+      $osC_CreditCard = new osC_CreditCardClass();
 
       $js = '  if (payment_value == "' . $this->_code . '") {' . "\n" .
             '    var authorizenet_cc_owner = document.checkout_payment.authorizenet_cc_owner.value;' . "\n" .
@@ -323,7 +323,7 @@
     function _verifyData() {
       global $osC_Language, $osC_MessageStack, $osC_CreditCard;
 
-      $osC_CreditCard = new osC_CreditCard($_POST['authorizenet_cc_number'], $_POST['authorizenet_cc_expires_month'], $_POST['authorizenet_cc_expires_year']);
+      $osC_CreditCard = new osC_CreditCardClass($_POST['authorizenet_cc_number'], $_POST['authorizenet_cc_expires_month'], $_POST['authorizenet_cc_expires_year']);
       $osC_CreditCard->setOwner($_POST['authorizenet_cc_owner']);
 
       if (MODULE_PAYMENT_AUTHORIZENET_CC_VERIFY_WITH_CVC == '1') {
