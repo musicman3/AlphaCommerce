@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Database {
+  class osC_DatabaseClass {
     var $is_connected = false,
         $link,
         $error_reporting = true,

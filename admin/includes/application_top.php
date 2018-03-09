@@ -79,7 +79,7 @@
 // include the database class
   require('../includes/classes/database.php');
   
-  $osC_Database = new osC_Database();
+  $osC_Database = new osC_DatabaseClass();
   $osC_Database = $osC_Database->connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
   $osC_Database->selectDatabase(DB_DATABASE);
 

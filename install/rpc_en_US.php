@@ -29,7 +29,7 @@
                     'DB_DATABASE_CLASS' => trim(urldecode($_GET['class']))
                    );
 
-        $osC_Database = osC_Database::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
+        $osC_Database = osC_DatabaseClass::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
 
         if ($osC_Database->isError() === false) {
           $osC_Database->selectDatabase($db['DB_DATABASE']);
@@ -54,7 +54,7 @@
                     'DB_TABLE_PREFIX' => trim(urldecode($_GET['prefix']))
                    );
 
-        $osC_Database = osC_Database::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
+        $osC_Database = osC_DatabaseClass::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
 
         if ($osC_Database->isError() === false) {
           $osC_Database->selectDatabase($db['DB_DATABASE']);
@@ -265,7 +265,7 @@
                     'DB_TABLE_PREFIX' => trim(urldecode($_GET['prefix']))
                    );
 
-        $osC_Database = osC_Database::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
+        $osC_Database = osC_DatabaseClass::connect($db['DB_SERVER'], $db['DB_SERVER_USERNAME'], $db['DB_SERVER_PASSWORD'], $db['DB_DATABASE_CLASS']);
 
         if ($osC_Database->isError() === false) {
           $osC_Database->selectDatabase($db['DB_DATABASE']);
