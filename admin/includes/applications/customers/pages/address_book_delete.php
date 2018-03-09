@@ -34,7 +34,7 @@
 
   <p><?php echo '<b>' . $osC_Language->get('delete_warning_primary_address_book_entry') . '</b>'; ?></p>
 
-  <p><?php echo osC_Address::format($osC_ObjectInfo_AddressBook->getAll(), ', '); ?></p>
+  <p><?php echo osC_AddressClass::format($osC_ObjectInfo_AddressBook->getAll(), ', '); ?></p>
 
   <p align="center"><?php echo '<input type="button" value="' . $osC_Language->get('button_back') . '" onclick="document.location.href=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $_GET['cID'] . '&search=' . $_GET['search'] . '&page=' . $_GET['page'] . '&action=save&tabIndex=tabAddressBook') . '\';" class="operationButton" />'; ?></p>
 
@@ -44,7 +44,7 @@
 
   <p><?php echo $osC_Language->get('introduction_delete_address_book_entry'); ?></p>
 
-  <p><?php echo '<b>' . osC_Address::format($osC_ObjectInfo_AddressBook->getAll(), ', ') . '</b>'; ?></p>
+  <p><?php echo '<b>' . osC_AddressClass::format($osC_ObjectInfo_AddressBook->getAll(), ', ') . '</b>'; ?></p>
 
   <p align="center"><?php echo osc_draw_hidden_field('subaction', 'confirm') . '<input type="submit" value="' . $osC_Language->get('button_delete') . '" class="operationButton" /> <input type="button" value="' . $osC_Language->get('button_cancel') . '" onclick="document.location.href=\'' . osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&cID=' . $_GET['cID'] . '&search=' . $_GET['search'] . '&page=' . $_GET['page'] . '&action=save&tabIndex=tabAddressBook') . '\';" class="operationButton" />'; ?></p>
 

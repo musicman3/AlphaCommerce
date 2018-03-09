@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_Address class handles address related functions such as the format and country and zone information
+ * The osC_AddressClass class handles address related functions such as the format and country and zone information
  */
 
-  class osC_Address {
+  class osC_AddressClass {
 
 /**
  * Correctly format an address to the address format rule assigned to its country
@@ -56,20 +56,20 @@
       $state_code = $address['zone_code'];
 
       if ( isset($address['zone_id']) && is_numeric($address['zone_id']) && ($address['zone_id'] > 0) ) {
-        $state = osC_Address::getZoneName($address['zone_id']);
-        $state_code = osC_Address::getZoneCode($address['zone_id']);
+        $state = osC_AddressClass::getZoneName($address['zone_id']);
+        $state_code = osC_AddressClass::getZoneCode($address['zone_id']);
       }
 
       $country = $address['country_title'];
 
       if ( empty($country) && isset($address['country_id']) && is_numeric($address['country_id']) && ($address['country_id'] > 0) ) {
-        $country = osC_Address::getCountryName($address['country_id']);
+        $country = osC_AddressClass::getCountryName($address['country_id']);
       }
 
       if ( isset($address['format']) ) {
         $address_format = $address['format'];
       } elseif ( isset($address['country_id']) && is_numeric($address['country_id']) && ($address['country_id'] > 0) ) {
-        $address_format = osC_Address::getFormat($address['country_id']);
+        $address_format = osC_AddressClass::getFormat($address['country_id']);
       }
 
       if ( empty($address_format) ) {

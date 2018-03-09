@@ -17,7 +17,7 @@
 
   $osC_Order = new osC_Order($_GET['oID']);
   $osC_DateTime = new osC_DateTime();
-  $osC_Address = new osC_Address();
+  $osC_Address = new osC_AddressClass();
   
   if ( !$osC_Order->isValid() ) {
     $osC_MessageStack->add($osC_Template->getModule(), sprintf(ERROR_ORDER_DOES_NOT_EXIST, $_GET['oID']), 'error');

@@ -217,7 +217,7 @@
                      '          <CommerceType>eCommerce</CommerceType>' . "\n" .
                      '          <Amount>' . $osC_Currencies->formatRaw($osC_ShoppingCart->getTotal(), $osC_Currencies->getCode()) * 100 . '</Amount>' . "\n" .
                      '          <Currency>' . $osC_Currencies->getCode() . '</Currency>' . "\n" .
-                     '          <CountryCode>' . osC_Address::getCountryIsoCode2(STORE_COUNTRY) . '</CountryCode>' . "\n" .
+                     '          <CountryCode>' . osC_AddressClass::getCountryIsoCode2(STORE_COUNTRY) . '</CountryCode>' . "\n" .
                      '          <Usage>' . STORE_NAME . '</Usage>' . "\n" .
                      '          <RECURRING_TRANSACTION>' . "\n" .
                      '            <Type>Single</Type>' . "\n" .

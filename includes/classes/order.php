@@ -128,13 +128,13 @@
       $Qorder->bindValue(':customers_city', $customer_address['entry_city']);
       $Qorder->bindValue(':customers_postcode', $customer_address['entry_postcode']);
       $Qorder->bindValue(':customers_state', $customer_address['entry_state']);
-      $Qorder->bindValue(':customers_state_code', osC_Address::getZoneCode($customer_address['entry_zone_id']));
-      $Qorder->bindValue(':customers_country', osC_Address::getCountryName($customer_address['entry_country_id']));
-      $Qorder->bindValue(':customers_country_iso2', osC_Address::getCountryIsoCode2($customer_address['entry_country_id']));
-      $Qorder->bindValue(':customers_country_iso3', osC_Address::getCountryIsoCode3($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_state_code', osC_AddressClass::getZoneCode($customer_address['entry_zone_id']));
+      $Qorder->bindValue(':customers_country', osC_AddressClass::getCountryName($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_country_iso2', osC_AddressClass::getCountryIsoCode2($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_country_iso3', osC_AddressClass::getCountryIsoCode3($customer_address['entry_country_id']));
       $Qorder->bindValue(':customers_telephone', $customer_address['entry_telephone']);
       $Qorder->bindValue(':customers_email_address', $osC_Customer->getEmailAddress());
-      $Qorder->bindValue(':customers_address_format', osC_Address::getFormat($customer_address['entry_country_id']));
+      $Qorder->bindValue(':customers_address_format', osC_AddressClass::getFormat($customer_address['entry_country_id']));
       $Qorder->bindValue(':customers_ip_address', osc_get_ip_address());
       $Qorder->bindValue(':delivery_name', $osC_ShoppingCart->getShippingAddress('firstname') . ' ' . $osC_ShoppingCart->getShippingAddress('lastname'));
       $Qorder->bindValue(':delivery_company', $osC_ShoppingCart->getShippingAddress('company'));
@@ -411,7 +411,7 @@
 
           $email_order .= "\n" . $osC_Language->get('email_order_delivery_address') . "\n" .
                           $osC_Language->get('email_order_separator') . "\n" .
-                          osC_Address::format($address) . "\n";
+                          osC_AddressClass::format($address) . "\n";
 
           unset($address);
         }
@@ -431,7 +431,7 @@
 
         $email_order .= "\n" . $osC_Language->get('email_order_billing_address') . "\n" .
                         $osC_Language->get('email_order_separator') . "\n" .
-                        osC_Address::format($address) . "\n\n";
+                        osC_AddressClass::format($address) . "\n\n";
 
         unset($address);
 
@@ -539,7 +539,7 @@
 
           $email_order .= "<br />" . $osC_Language->get('email_order_delivery_address') . "<br />" .
                           $osC_Language->get('email_order_separator') . "<br />" .
-                          nl2br(osC_Address::format($address)) . "<br />";
+                          nl2br(osC_AddressClass::format($address)) . "<br />";
 
           unset($address);
         }
@@ -559,7 +559,7 @@
 
         $email_order .= "<br />" . $osC_Language->get('email_order_billing_address') . "<br />" .
                         $osC_Language->get('email_order_separator') . "<br />" .
-                        nl2br(osC_Address::format($address)) . "<br /><br />";
+                        nl2br(osC_AddressClass::format($address)) . "<br /><br />";
 
         unset($address);
 

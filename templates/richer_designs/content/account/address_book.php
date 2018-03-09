@@ -31,7 +31,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
   <div class="content">
     <div style="float: right; padding: 0px 0px 10px 20px;">
-      <?php echo osC_Address::format($osC_Customer->getDefaultAddressID(), '<br />'); ?>
+      <?php echo osC_AddressClass::format($osC_Customer->getDefaultAddressID(), '<br />'); ?>
     </div>
 
     <div style="float: right; padding: 0px 0px 10px 20px; text-align: center;">
@@ -70,7 +70,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
         <td class="submitFormButtons" align="right"><?php echo $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_ACCOUNT, 'address_book=' . $Qaddresses->valueInt('address_book_id') . '&edit', 'SSL'), 'icon' => 'pencil', 'title' => $osC_Language->get('button_edit'))) . '&nbsp;' . $osC_Template->osc_draw_image_jquery_button(array('href' => osc_href_link(FILENAME_ACCOUNT, 'address_book=' . $Qaddresses->valueInt('address_book_id') . '&delete', 'SSL'), 'icon' => 'trash', 'title' => $osC_Language->get('button_delete'))); ?></td>
       </tr>
       <tr>
-        <td colspan="2" style="padding: 0px 0px 10px 10px;"><?php echo osC_Address::format($Qaddresses->toArray(), '<br />'); ?></td>
+        <td colspan="2" style="padding: 0px 0px 10px 10px;"><?php echo osC_AddressClass::format($Qaddresses->toArray(), '<br />'); ?></td>
       </tr>
 
 <?php

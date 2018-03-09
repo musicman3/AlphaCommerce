@@ -117,7 +117,7 @@
 
       echo osc_draw_pull_down_menu('ab_state', $zones_array);
     } else {
-      echo osc_draw_input_field('ab_state', (!osc_empty($osC_ObjectInfo->get('zone_id')) ? osC_Address::getZoneName($osC_ObjectInfo->get('zone_id')) : $osC_ObjectInfo->get('state')));
+      echo osc_draw_input_field('ab_state', (!osc_empty($osC_ObjectInfo->get('zone_id')) ? osC_AddressClass::getZoneName($osC_ObjectInfo->get('zone_id')) : $osC_ObjectInfo->get('state')));
     }
 ?>
 
@@ -135,7 +135,7 @@
 <?php
   $countries_array = array();
 
-  foreach ( osC_Address::getCountries() as $country ) {
+  foreach ( osC_AddressClass::getCountries() as $country ) {
     $countries_array[] = array('id' => $country['id'],
                                'text' => $country['name']);
   }

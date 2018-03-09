@@ -30,7 +30,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
   if ($osC_ShoppingCart->hasShippingAddress()) {
 ?>
           <p><?php echo '<b>' . $osC_Language->get('order_delivery_address_title') . '</b> ' . osc_link_object(osc_href_link(FILENAME_CHECKOUT, 'shipping_address', 'SSL'), '<span class="orderEdit">' . $osC_Language->get('order_text_edit_title') . '</span>'); ?></p>
-          <p><?php echo osC_Address::format($osC_ShoppingCart->getShippingAddress(), '<br />'); ?></p>
+          <p><?php echo osC_AddressClass::format($osC_ShoppingCart->getShippingAddress(), '<br />'); ?></p>
 
 <?php
     if ($osC_ShoppingCart->hasShippingMethod()) {
@@ -45,7 +45,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 ?>
 
           <p><?php echo '<b>' . $osC_Language->get('order_billing_address_title') . '</b> ' . osc_link_object(osc_href_link(FILENAME_CHECKOUT, 'payment_address', 'SSL'), '<span class="orderEdit">' . $osC_Language->get('order_text_edit_title') . '</span>'); ?></p>
-          <p><?php echo osC_Address::format($osC_ShoppingCart->getBillingAddress(), '<br />'); ?></p>
+          <p><?php echo osC_AddressClass::format($osC_ShoppingCart->getBillingAddress(), '<br />'); ?></p>
 
           <p><?php echo '<b>' . $osC_Language->get('order_payment_method_title') . '</b> ' . osc_link_object(osc_href_link(FILENAME_CHECKOUT, 'payment', 'SSL'), '<span class="orderEdit">' . $osC_Language->get('order_text_edit_title') . '</span>'); ?></p>
           <p><?php echo $osC_ShoppingCart->getBillingMethod('title'); ?></p>

@@ -38,7 +38,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 ?>
 
           <h6><?php echo $osC_Language->get('order_delivery_address_title'); ?></h6>
-          <?php $osC_Address = new osC_Address(); ?>
+          <?php $osC_Address = new osC_AddressClass(); ?>
           <p><?php echo $osC_Address->format($order->delivery, '<br />'); ?></p>
 
 <?php

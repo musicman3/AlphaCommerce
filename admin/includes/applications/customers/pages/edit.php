@@ -159,7 +159,7 @@ $(document).ready(function(){
       echo osc_icon('people.png') . '&nbsp;';
     }
 
-    echo osC_Address::format($Qaddresses->toArray(), ', ');
+    echo osC_AddressClass::format($Qaddresses->toArray(), ', ');
 
     if ( $osC_ObjectInfo->get('customers_default_address_id') == $Qaddresses->valueInt('address_book_id') ) {
       echo '&nbsp;<i>(' . $osC_Language->get('primary_address') . ')</i>';

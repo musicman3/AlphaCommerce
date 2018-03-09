@@ -69,7 +69,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 
   <div class="content">
     <div style="float: right; padding: 0px 0px 10px 20px;">
-      <?php echo osC_Address::format($osC_ShoppingCart->getBillingAddress(), '<br />'); ?>
+      <?php echo osC_AddressClass::format($osC_ShoppingCart->getBillingAddress(), '<br />'); ?>
     </div>
 
     <div style="float: right; padding: 0px 0px 10px 20px; text-align: center;">
