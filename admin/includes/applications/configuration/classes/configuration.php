@@ -103,7 +103,7 @@
         $Qupdate->execute();
 
         if ( $Qupdate->affectedRows() ) {
-          osC_Cache::clear('configuration');
+          osC_CacheClass::clear('configuration');
 
           return true;
         }

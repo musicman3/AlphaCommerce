@@ -44,14 +44,14 @@
         switch ( $_GET['action'] ) {
           case 'delete':
 /*HPDL
-            if ( osC_Cache::clear($_GET['block']) ) {
+            if ( osC_CacheClass::clear($_GET['block']) ) {
               $osC_MessageStack->add($this->_module, $osC_Language->get('ms_success_action_performed'), 'success');
             } else {
               $osC_MessageStack->add($this->_module, $osC_Language->get('ms_error_action_not_performed'), 'error');
             }
 */
 
-            osC_Cache::clear($_GET['block']);
+            osC_CacheClass::clear($_GET['block']);
 
             osc_redirect_admin(osc_href_link_admin(FILENAME_DEFAULT, $this->_module));
 
@@ -60,7 +60,7 @@
           case 'batchDelete':
             if ( isset($_POST['batch']) && is_array($_POST['batch']) && !empty($_POST['batch']) ) {
               foreach ($_POST['batch'] as $id) {
-                osC_Cache::clear($id);
+                osC_CacheClass::clear($id);
               }
 
               osc_redirect_admin(osc_href_link_admin(FILENAME_DEFAULT, $this->_module));

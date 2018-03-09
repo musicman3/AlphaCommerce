@@ -106,7 +106,7 @@
       $Qcc->execute();
 
       if ( $Qcc->affectedRows() ) {
-        osC_Cache::clear('credit-cards');
+        osC_CacheClass::clear('credit-cards');
 
         return true;
       }
@@ -124,7 +124,7 @@
       $Qdel->execute();
 
       if ( $Qdel->affectedRows() ) {
-        osC_Cache::clear('credit-cards');
+        osC_CacheClass::clear('credit-cards');
 
         return true;
       }
@@ -143,7 +143,7 @@
       $Qcc->execute();
 
       if ( $Qcc->affectedRows() ) {
-        osC_Cache::clear('credit-cards');
+        osC_CacheClass::clear('credit-cards');
 
         return true;
       }

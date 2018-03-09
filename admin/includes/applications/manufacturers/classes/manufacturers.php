@@ -154,7 +154,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('manufacturers');
+        osC_CacheClass::clear('manufacturers');
 
         return true;
       }
@@ -209,7 +209,7 @@
         $Qupdate->execute();
       }
 
-      osC_Cache::clear('manufacturers');
+      osC_CacheClass::clear('manufacturers');
 
       return true;
     }

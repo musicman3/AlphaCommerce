@@ -73,7 +73,7 @@
         $osC_Database->commitTransaction();
 
         if ( $default === true ) {
-          //osC_Cache::clear('configuration');
+          //osC_CacheClass::clear('configuration');
         }
 
         return true;

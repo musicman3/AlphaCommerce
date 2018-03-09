@@ -56,7 +56,7 @@
 
 // initialize the cache class
   require('../includes/classes/cache.php');
-  $osC_Cache = new osC_Cache();
+  $osC_Cache = new osC_CacheClass();
 
 // include the administrators log class
   if ( file_exists('includes/applications/administrators_log/classes/administrators_log.php') ) {

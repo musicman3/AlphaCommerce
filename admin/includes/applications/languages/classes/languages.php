@@ -225,7 +225,7 @@
       $Qdel->execute();
 
       if ( !$osC_Database->isError() ) {
-        osC_Cache::clear('languages');
+        osC_CacheClass::clear('languages');
 
         return true;
       }
@@ -325,7 +325,7 @@
           break;
         }
 
-        osC_Cache::clear('languages-' . $l['code'] . '-' . $group);
+        osC_CacheClass::clear('languages-' . $l['code'] . '-' . $group);
       }
 
       if ( $error === false ) {
@@ -365,7 +365,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('languages-' . self::get($language_id, 'code') . '-' . $group);
+        osC_CacheClass::clear('languages-' . self::get($language_id, 'code') . '-' . $group);
 
         return true;
       }
@@ -398,7 +398,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('languages-' . self::get($language_id, 'code') . '-' . $group);
+        osC_CacheClass::clear('languages-' . self::get($language_id, 'code') . '-' . $group);
 
         return true;
       }
@@ -449,7 +449,7 @@
 
           if ( $osC_Database->isError() === false ) {
             if ( $Qupdate->affectedRows() ) {
-              osC_Cache::clear('configuration');
+              osC_CacheClass::clear('configuration');
             }
           } else {
             $error = true;
@@ -460,7 +460,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('languages');
+        osC_CacheClass::clear('languages');
 
         return true;
       } else {
@@ -645,7 +645,7 @@
         if ( $error === false ) {
           $osC_Database->commitTransaction();
 
-          osC_Cache::clear('languages');
+          osC_CacheClass::clear('languages');
 
           return true;
         } else {
@@ -1172,7 +1172,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('languages');
+        osC_CacheClass::clear('languages');
 
         return true;
       } else {

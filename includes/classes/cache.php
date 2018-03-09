@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_Cache class handles the caching of dynamically generated data
+ * The osC_CacheClass class handles the caching of dynamically generated data
  */
 
-  class osC_Cache {
+  class osC_CacheClass {
 
 /**
  * The cached data

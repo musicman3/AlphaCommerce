@@ -223,9 +223,9 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('categories');
-        osC_Cache::clear('category_tree');
-        osC_Cache::clear('also_purchased');
+        osC_CacheClass::clear('categories');
+        osC_CacheClass::clear('category_tree');
+        osC_CacheClass::clear('also_purchased');
 
         return true;
       }
@@ -301,9 +301,9 @@
               if ( !$osC_Database->isError() ) {
                 $osC_Database->commitTransaction();
 
-                osC_Cache::clear('categories');
-                osC_Cache::clear('category_tree');
-                osC_Cache::clear('also_purchased');
+                osC_CacheClass::clear('categories');
+                osC_CacheClass::clear('category_tree');
+                osC_CacheClass::clear('also_purchased');
 
                 if ( !osc_empty($Qimage->value('categories_image')) ) {
                   $Qcheck = $osC_Database->query('select count(*) as total from :table_categories where categories_image = :categories_image');
@@ -332,9 +332,9 @@
           osC_Products_Admin::delete($id);
         }
 
-        osC_Cache::clear('categories');
-        osC_Cache::clear('category_tree');
-        osC_Cache::clear('also_purchased');
+        osC_CacheClass::clear('categories');
+        osC_CacheClass::clear('category_tree');
+        osC_CacheClass::clear('also_purchased');
 
         return true;
       }
@@ -358,9 +358,9 @@
       $Qupdate->setLogging($_SESSION['module'], $id);
       $Qupdate->execute();
 
-      osC_Cache::clear('categories');
-      osC_Cache::clear('category_tree');
-      osC_Cache::clear('also_purchased');
+      osC_CacheClass::clear('categories');
+      osC_CacheClass::clear('category_tree');
+      osC_CacheClass::clear('also_purchased');
 
       return true;
     }

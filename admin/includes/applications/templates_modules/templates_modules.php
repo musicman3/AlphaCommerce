@@ -130,7 +130,7 @@
       if ( $error === false ) {
         $osC_Database->commitTransaction();
 
-        osC_Cache::clear('configuration');
+        osC_CacheClass::clear('configuration');
 
         return true;
       }
@@ -153,9 +153,9 @@
         $module = new $class();
         $module->install();
 
-        osC_Cache::clear('configuration');
-        osC_Cache::clear('modules_' . $set);
-        osC_Cache::clear('templates_' . $set . '_layout');
+        osC_CacheClass::clear('configuration');
+        osC_CacheClass::clear('modules_' . $set);
+        osC_CacheClass::clear('templates_' . $set . '_layout');
 
         return true;
       }
@@ -176,9 +176,9 @@
         $module = new $class();
         $module->remove();
 
-        osC_Cache::clear('configuration');
-        osC_Cache::clear('modules_' . $set);
-        osC_Cache::clear('templates_' . $set . '_layout');
+        osC_CacheClass::clear('configuration');
+        osC_CacheClass::clear('modules_' . $set);
+        osC_CacheClass::clear('templates_' . $set . '_layout');
 
         return true;
       }
