@@ -12,8 +12,8 @@
   as published by the Free Software Foundation.
 */
 ?>
-<?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {
-echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
+<?php if (file_exists(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage()) == true)) {
+echo osc_image(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
 } else {}
 ?>
 
