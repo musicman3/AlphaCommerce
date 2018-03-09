@@ -17,7 +17,7 @@
       global $osC_Breadcrumb, $osC_Language;
 
       include('includes/classes/breadcrumb.php');
-      $osC_Breadcrumb = new osC_Breadcrumb();
+      $osC_Breadcrumb = new osC_BreadcrumbClass();
 
       $osC_Breadcrumb->add($osC_Language->get('breadcrumb_top'), HTTP_SERVER);
       $osC_Breadcrumb->add($osC_Language->get('breadcrumb_shop'), osc_href_link(FILENAME_DEFAULT));

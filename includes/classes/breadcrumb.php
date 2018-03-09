@@ -13,10 +13,10 @@
 */
 
 /**
- * The osC_Breadcrumb class handles the breadcrumb navigation path
+ * The osC_BreadcrumbClass class handles the breadcrumb navigation path
  */
 
-  class osC_Breadcrumb implements iterator {
+  class osC_BreadcrumbClass implements iterator {
 
 /**
  * An array containing the breadcrumb navigation path
