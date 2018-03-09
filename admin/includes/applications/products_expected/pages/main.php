@@ -62,7 +62,8 @@
 
     <tr onmouseover="rowOverEffect(this);" onmouseout="rowOutEffect(this);">
       <td onclick="document.getElementById('batch<?php echo $Qproducts->valueInt('products_id'); ?>').checked = !document.getElementById('batch<?php echo $Qproducts->valueInt('products_id'); ?>').checked;"><?php echo $Qproducts->value('products_name'); ?></td>
-      <td align="center"><?php echo osC_DateTime::getShort($Qproducts->value('products_date_available')); ?></td>
+      <?php $osC_DateTime = new osC_DateTime(); ?>
+      <td align="center"><?php echo $osC_DateTime->getShort($Qproducts->value('products_date_available')); ?></td>
       <td align="right">
 
 <?php
