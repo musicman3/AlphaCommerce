@@ -46,7 +46,7 @@ echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . '
 ?>
 
 <div class="moduleBox">
-  <div style="float: right; margin-top: 5px;"><?php echo osC_DateTime::getLong($Qreviews->value('date_added')); ?></div>
+  <div style="float: right; margin-top: 5px;"><?php echo osC_DateTimeClass::getLong($Qreviews->value('date_added')); ?></div>
 
   <h6><?php echo osc_link_object(osc_href_link(FILENAME_PRODUCTS, 'reviews=' . $Qreviews->valueInt('reviews_id') . '&' . $Qreviews->value('products_keyword')), $Qreviews->value('products_name')); ?> (<?php echo sprintf(($osC_Language->get('reviewed_by')), $Qreviews->valueProtected('customers_name')); ?>)
 

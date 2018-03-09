@@ -115,7 +115,7 @@
 <?php
   while ( $Qorders->next() ) {
 ?>
-	<?php $osC_DateTime = new osC_DateTime(); ?>
+	<?php $osC_DateTime = new osC_DateTimeClass(); ?>
     <tr onmouseover="rowOverEffect(this);" onmouseout="rowOutEffect(this);">
       <td><?php echo osc_link_object(osc_href_link_admin(FILENAME_DEFAULT, $osC_Template->getModule() . '&' . (isset($_GET['search']) ? 'search=' . $_GET['search'] . '&' : '') . (isset($_GET['status']) ? 'status=' . $_GET['status'] . '&' : '') . (isset($_GET['cID']) ? 'cID=' . $_GET['cID'] . '&' : '') . 'page=' . $_GET['page'] . '&oID=' . $Qorders->valueInt('orders_id') . '&action=save'), osc_icon('orders.png') . '&nbsp;' . $Qorders->valueProtected('customers_name')); ?></td>
       <td align="center"><?php echo $Qorders->value('orders_id'); ?></td>

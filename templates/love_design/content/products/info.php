@@ -156,7 +156,7 @@ echo osc_image(DIR_WS_IMAGES.'products/mini/'.$osC_Product->getImage(), '', '', 
 
 			<tr>
 				<td class="productInfoKey" style="color:#ff0000"><?php echo $osC_Language->get('upcoming_products_title_2') ?>:</td>
-				<?php $osC_DateTime = new osC_DateTime(); ?>
+				<?php $osC_DateTime = new osC_DateTimeClass(); ?>
 				<td class="productInfoValue" style="color:#ff0000"><?php echo $osC_DateTime->getLong($osC_Product->getAttribute('date_available')); ?></td>
 			</tr>
 

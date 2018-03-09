@@ -59,7 +59,7 @@
   function osc_get_system_information() {
     global $osC_Database;
 
-    $osC_DateTime = new osC_DateTime();
+    $osC_DateTime = new osC_DateTimeClass();
 
     $Qdb_date = $osC_Database->query('select now() as datetime');
     $Qdb_uptime = $osC_Database->query('show status like "Uptime"');

@@ -50,7 +50,7 @@
         while ($Qupcoming->next()) {
           $osC_Product = new osC_Product($Qupcoming->valueInt('products_id'));
 
-          $this->_content .= '<li>' . osC_DateTime::getLong($Qupcoming->value('date_expected')) . ': ' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword()), $osC_Product->getTitle()) . ' - ' . $osC_Product->getPriceFormated(true) . '</li>';
+          $this->_content .= '<li>' . osC_DateTimeClass::getLong($Qupcoming->value('date_expected')) . ': ' . osc_link_object(osc_href_link(FILENAME_PRODUCTS, $osC_Product->getKeyword()), $osC_Product->getTitle()) . ' - ' . $osC_Product->getPriceFormated(true) . '</li>';
         }
 
         $this->_content .= '</ol>';

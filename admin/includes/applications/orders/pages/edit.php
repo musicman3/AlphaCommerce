@@ -16,7 +16,7 @@
   $osC_Tax = new osC_Tax_Admin();
 
   $osC_Order = new osC_Order($_GET['oID']);
-  $osC_DateTime = new osC_DateTime();
+  $osC_DateTime = new osC_DateTimeClass();
   $osC_Address = new osC_AddressClass();
   
   if ( !$osC_Order->isValid() ) {

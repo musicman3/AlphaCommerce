@@ -97,7 +97,7 @@
       }
     }
 ?>
-	<?php $osC_DateTime = new osC_DateTime(); ?>
+	<?php $osC_DateTime = new osC_DateTimeClass(); ?>
     <tr onmouseover="rowOverEffect(this);" onmouseout="rowOutEffect(this);" <?php echo (($Qcustomers->valueInt('customers_status') !== 1) ? 'class="deactivatedRow"' : '') ?>>
       <td align="center"><?php echo $customer_icon; ?></td>
       <td onclick="document.getElementById('batch<?php echo $Qcustomers->valueInt('customers_id'); ?>').checked = !document.getElementById('batch<?php echo $Qcustomers->valueInt('customers_id'); ?>').checked;"><?php echo $Qcustomers->valueProtected('customers_lastname'); ?></td>

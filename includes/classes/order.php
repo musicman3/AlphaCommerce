@@ -356,7 +356,7 @@
                        $osC_Language->get('email_order_separator') . "\n" .
                        sprintf($osC_Language->get('email_order_order_number'), $id) . "\n" .
                        sprintf($osC_Language->get('email_order_invoice_url'), osc_href_link(FILENAME_ACCOUNT, 'orders=' . $id, 'SSL', false, true, true)) . "\n" .
-                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTime::getLong()) . "\n\n" .
+                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTimeClass::getLong()) . "\n\n" .
                        $osC_Language->get('email_order_products') . "\n" .
                        $osC_Language->get('email_order_separator') . "\n";
 
@@ -452,7 +452,7 @@
         $Qstatuses->execute();
 
         while ($Qstatuses->next()) {
-				$dateformat = osC_DateTime::getLong($Qstatuses->value('date_added'));
+				$dateformat = osC_DateTimeClass::getLong($Qstatuses->value('date_added'));
           $email_order .= $dateformat . "\n\t" . wordwrap(str_replace("\n", "\n\t", $Qstatuses->value('comments')), 60, "\n\t", 1) . "\n\n";
         }			
         unset($Qstatuses);
@@ -484,7 +484,7 @@
                        $osC_Language->get('email_order_separator') . "<br />" .
                        sprintf($osC_Language->get('email_order_order_number'), $id) . "<br />" .
                        sprintf($osC_Language->get('email_order_invoice_url'), osc_href_link(FILENAME_ACCOUNT, 'orders=' . $id, 'SSL', false, true, true)) . "<br />" .
-                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTime::getLong()) . "<br /><br />" .
+                       sprintf($osC_Language->get('email_order_date_ordered'), osC_DateTimeClass::getLong()) . "<br /><br />" .
                        $osC_Language->get('email_order_products') . "<br />" .
                        $osC_Language->get('email_order_separator') . "<br />";
 
@@ -580,7 +580,7 @@
         $Qstatuses->execute();
 
         while ($Qstatuses->next()) {
-				$dateformat = osC_DateTime::getLong($Qstatuses->value('date_added'));
+				$dateformat = osC_DateTimeClass::getLong($Qstatuses->value('date_added'));
           $email_order .= $dateformat . "<br /><br />" . nl2br($Qstatuses->value('comments')). "<br /><br />";
         }
         unset($Qstatuses);			

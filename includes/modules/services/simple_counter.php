@@ -30,7 +30,7 @@
 
         $Qcounterupdate->freeResult();
       } else {
-        $counter_startdate = osC_DateTime::getNow();
+        $counter_startdate = osC_DateTimeClass::getNow();
         $counter_now = 1;
 
         $Qcounterupdate = $osC_Database->query('insert into :table_counter (startdate, counter) values (:start_date, 1)');

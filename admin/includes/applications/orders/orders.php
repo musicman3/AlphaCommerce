@@ -214,7 +214,7 @@
       $Qupdate->setLogging($_SESSION['module'], $id);
       $Qupdate->execute();
 	  
-	  $osC_DateTime = new osC_DateTime();
+	  $osC_DateTime = new osC_DateTimeClass();
       if ( !$osC_Database->isError() ) {
 
 				//START TEXT-PLAIN E-MAIL
