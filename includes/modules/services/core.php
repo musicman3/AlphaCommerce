@@ -27,7 +27,7 @@
       include('includes/classes/address.php');
 
       include('includes/classes/customer.php');
-      $osC_Customer = new osC_Customer();
+      $osC_Customer = new osC_CustomerClass();
 
       include('includes/classes/tax.php');
       $osC_Tax = new osC_Tax();

@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Customer {
+  class osC_CustomerClass {
 
 /* Private variables */
 
