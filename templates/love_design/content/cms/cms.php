@@ -17,7 +17,7 @@ http://oscommerce-extra.hu
 	// define the max number of articles to display
 	$max_articles = MAX_DISPLAY_CMS_ARTICLES;
 	// grab a list of cms items
-	$osC_Cms = new osC_Cms();
+	$osC_Cms = new osC_CmsClass();
 	$QcmsList = $osC_Cms->getListing();
 
 ?>

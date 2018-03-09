@@ -14,7 +14,7 @@
 */
 
   // grab the item requested
-  $osC_Cms = new osC_Cms();
+  $osC_Cms = new osC_CmsClass();
   $QcmsDetails = $osC_Cms->getDetails();
   
 ?>
