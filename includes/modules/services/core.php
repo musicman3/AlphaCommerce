@@ -43,7 +43,7 @@
       $osC_NavigationHistory = new osC_NavigationHistory(true);
 
       include('includes/classes/image.php');
-      $osC_Image = new osC_Image();
+      $osC_Image = new osC_ImageClass();
 
       return true;
     }
