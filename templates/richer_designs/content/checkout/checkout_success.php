@@ -36,6 +36,11 @@
   }
 ?>
 
+<?php if (file_exists('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage()) == true) {
+echo osc_image('templates/' . $osC_Template->getCode() . '/' . DIR_WS_IMAGES . 'icons/' . $osC_Template->getPageImage(), '', '', HEADING_IMAGE_HEIGHT_ICON, 'id="pageIcon"');
+} else {}
+?>
+
 <h1><?php echo $osC_Template->getPageTitle(); ?></h1>
 
 <form name="order" action="<?php echo osc_href_link(FILENAME_CHECKOUT, 'success=update', 'SSL'); ?>" method="post">
