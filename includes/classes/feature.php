@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Feature {
+  class osC_FeatureClass {
 
 /* Private variables */
 

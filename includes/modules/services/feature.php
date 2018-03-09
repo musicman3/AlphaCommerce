@@ -17,7 +17,7 @@
       global $osC_Feature;
 
       require('includes/classes/feature.php');
-      $osC_Feature = new osC_Feature();
+      $osC_Feature = new osC_FeatureClass();
 
       $osC_Feature->activateAll();
       $osC_Feature->expireAll();
