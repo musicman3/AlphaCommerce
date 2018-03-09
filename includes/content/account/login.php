@@ -50,13 +50,13 @@
     function _process() {
       global $osC_Database, $osC_Session, $osC_Language, $osC_ShoppingCart, $osC_MessageStack, $osC_Customer, $osC_NavigationHistory;
 
-      if (osC_Account::checkEntry($_POST['email_address'])) {
-        if (osC_Account::checkPassword($_POST['password'], $_POST['email_address'])) {
+      if (osC_AccountClass::checkEntry($_POST['email_address'])) {
+        if (osC_AccountClass::checkPassword($_POST['password'], $_POST['email_address'])) {
           if (SERVICE_SESSION_REGENERATE_ID == '1') {
             $osC_Session->recreate();
           }
 
-          $osC_Customer->setCustomerData(osC_Account::getID($_POST['email_address']));
+          $osC_Customer->setCustomerData(osC_AccountClass::getID($_POST['email_address']));
 
           $Qupdate = $osC_Database->query('update :table_customers set date_last_logon = :date_last_logon, number_of_logons = number_of_logons+1 where customers_id = :customers_id');
           $Qupdate->bindTable(':table_customers', TABLE_CUSTOMERS);

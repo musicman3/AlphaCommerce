@@ -57,7 +57,7 @@
 
 //START TEXT-PLAIN E-MAIL	
 	  if (EMAIL_USE_HTML == '-1') {		
-        if (osC_Account::savePassword($password, $Qcheck->valueInt('customers_id'))) {
+        if (osC_AccountClass::savePassword($password, $Qcheck->valueInt('customers_id'))) {
           if (ACCOUNT_GENDER > -1) {
 		$data = $Qcheck->toArray();
 
@@ -81,7 +81,7 @@
 		
 //START TEXT-HTML E-MAIL	
 	  if (EMAIL_USE_HTML == '1') {		
-        if (osC_Account::savePassword($password, $Qcheck->valueInt('customers_id'))) {
+        if (osC_AccountClass::savePassword($password, $Qcheck->valueInt('customers_id'))) {
           if (ACCOUNT_GENDER > -1) {
 		$data = $Qcheck->toArray();
 
