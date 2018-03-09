@@ -12,7 +12,7 @@
   as published by the Free Software Foundation.
 */
 
-  class osC_Language {
+  class osC_LanguageClass {
 
 /* Private variables */
     var $_code,
@@ -65,7 +65,7 @@
 
       $Qdef = $osC_Database->query('select * from :table_languages_definitions where languages_id = :languages_id and content_group = :content_group');
       $Qdef->bindTable(':table_languages_definitions', TABLE_LANGUAGES_DEFINITIONS);
-      $Qdef->bindInt(':languages_id', osC_Language::getData('id', $language_code));
+      $Qdef->bindInt(':languages_id', osC_LanguageClass::getData('id', $language_code));
       $Qdef->bindValue(':content_group', $key);
       $Qdef->setCache('languages-' . $language_code . '-' . $key);
       $Qdef->execute();
